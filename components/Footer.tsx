@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="py-12 px-6 border-t-2 border-[#000000] bg-[#FAFAFA] relative">
+    <footer className="py-12 px-6 border-t-2 border-[#000000] bg-[#f8f7f3] relative">
       {/* Top border accent */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-black/20 to-transparent"></div>
       
