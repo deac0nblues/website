@@ -55,8 +55,12 @@ export default function Boundaries() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
-        className="text-[#666666] text-sm md:text-base leading-relaxed relative z-10"
+        className="text-[#2D2D2D] text-lg leading-relaxed relative z-10"
       >
+        <div className="code-accent mb-4 text-xs tracking-widest text-black/40">
+          [BOUNDARIES]
+        </div>
+        
         {/* Strikethrough accent line */}
         <div className="absolute left-0 top-6 bottom-6 w-px bg-gradient-to-b from-black/10 via-black/5 to-transparent hidden md:block"></div>
         
@@ -64,10 +68,7 @@ export default function Boundaries() {
         <div className="absolute left-0 top-12 w-16 h-px bg-black/8 hidden md:block"></div>
         
         <div className="pl-8 md:pl-12">
-          <div className="code-accent mb-4 text-xs tracking-widest text-black/40">
-            [BOUNDARIES]
-          </div>
-          <p className="mb-6 font-medium text-[#2D2D2D] text-base">We don't:</p>
+          <p className="mb-6 font-medium text-[#2D2D2D]">We don't:</p>
           <ul className="space-y-3 list-none">
             <li className="flex items-start">
               <span className="text-black/30 mr-3">×</span>

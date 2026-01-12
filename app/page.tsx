@@ -15,7 +15,7 @@ import MouseReactive from "@/components/MouseReactive";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#FAFAFA]">
+    <main className="min-h-screen relative" style={{ backgroundColor: 'transparent' }}>
       <DynamicGrid />
       <NavigationBar />
       
