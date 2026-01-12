@@ -93,10 +93,10 @@ export default function Home() {
             [POSITION]
           </div>
           <p className="font-medium">
-            We design and deploy cutting-edge AI systems backed by disciplined engineering and statistical expertise.
+            We design and deploy advanced AI systems backed by disciplined engineering and statistical rigor.
           </p>
           <p>
-            Our job is to tell you where your business must go to compete in the age of AI—and to build the systems that get you there.
+            We chart where your business must go to compete in the age of AI with you—and to build the systems that get you there.
           </p>
         </motion.div>
       </section>

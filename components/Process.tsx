@@ -153,7 +153,9 @@ export default function Process() {
         
         {/* Whitepaper button */}
         <motion.a
-          href="#whitepaper"
+          href="/assets/documents/Quicksilver_Labs_AISOS_Whitepaper.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-block px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-200 font-medium tracking-wider text-sm code-accent"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}

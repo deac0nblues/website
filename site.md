@@ -117,7 +117,6 @@ We identify system-level failure modes early, validate that risks are solvable, 
 We do not sell perpetual services. We build systems, document them, and teach your team how to operate and evolve what we deliver.
 
 Optional bullets (short):
-
 Time-boxed, senior-led engagements
 
 Production-first engineering

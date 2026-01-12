@@ -15,12 +15,15 @@ export default function Footer() {
       
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-          <a 
-            href="#contact" 
-            className="text-[#000000] hover:underline transition-all font-medium code-accent tracking-wider"
-          >
-            Contact
-          </a>
+          <div className="flex flex-col items-start">
+            <a 
+              href="mailto:ben@quicksilverlab.ai" 
+              className="text-[#000000] hover:underline transition-all font-medium code-accent tracking-wider"
+            >
+              Contact
+            </a>
+            <p className="text-[#666666] code-accent text-xs tracking-widest mt-2">617.932.5512</p>
+          </div>
           <p className="text-[#666666] code-accent text-xs tracking-widest">
             Based in Boston and Houston, working globally
           </p>
