@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import { motion } from "framer-motion";
 
 const sections = [
@@ -15,38 +15,126 @@ const sections = [
 export default function NavigationBar() {
   const [activeSection, setActiveSection] = useState("hero");
   const [isHovered, setIsHovered] = useState(false);
-  const isOnDarkSection = activeSection === "process";
+  const lastChangeTime = useRef(0);
+  const pendingSection = useRef<string | null>(null);
+  const debounceTimeout = useRef<NodeJS.Timeout | null>(null);
+  const MIN_CHANGE_INTERVAL = 150; // milliseconds - minimum time between section changes
+
+  // Memoize isOnDarkSection to prevent unnecessary recalculations
+  const isOnDarkSection = useMemo(() => activeSection === "process", [activeSection]);
 
   useEffect(() => {
+    let ticking = false;
+    let lastActiveSection = "hero";
+    const HYSTERESIS_BUFFER = 200; // pixels - buffer zone to prevent rapid switching
+
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
-      const documentHeight = document.documentElement.scrollHeight;
-      const windowHeight = window.innerHeight;
-      
-      // Check if we're near the bottom of the page (within 200px)
-      if (window.scrollY + windowHeight >= documentHeight - 200) {
-        // Activate the last section (contact)
-        const lastSection = sections[sections.length - 1];
-        setActiveSection(lastSection.id);
-        return;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          const windowHeight = window.innerHeight;
+          const documentHeight = document.documentElement.scrollHeight;
+          const viewportCenter = scrollY + windowHeight / 2;
+          
+          // Check if we're near the bottom of the page (within 200px)
+          if (scrollY + windowHeight >= documentHeight - 200) {
+            const lastSection = sections[sections.length - 1];
+            if (lastActiveSection !== lastSection.id) {
+              lastActiveSection = lastSection.id;
+              updateSectionSafely(lastSection.id);
+            }
+            ticking = false;
+            return;
+          }
+
+          // First, check if we're still clearly in the current section (with hysteresis)
+          const currentSectionEl = document.getElementById(lastActiveSection);
+          let bestSection = lastActiveSection;
+          
+          if (currentSectionEl) {
+            const rect = currentSectionEl.getBoundingClientRect();
+            const sectionTop = rect.top + scrollY;
+            const sectionBottom = sectionTop + rect.height;
+            
+            // Expanded boundaries for current section (hysteresis)
+            const expandedTop = sectionTop - HYSTERESIS_BUFFER;
+            const expandedBottom = sectionBottom + HYSTERESIS_BUFFER;
+            
+            // If viewport center is still within expanded boundaries, stay with current section
+            if (viewportCenter >= expandedTop && viewportCenter <= expandedBottom) {
+              bestSection = lastActiveSection;
+            } else {
+              // We've scrolled past the current section, find the new one
+              // Check sections from bottom to top to find the one we're entering
+              for (let i = sections.length - 1; i >= 0; i--) {
+                const section = document.getElementById(sections[i].id);
+                if (section) {
+                  const rect = section.getBoundingClientRect();
+                  const sectionTop = rect.top + scrollY;
+                  const sectionBottom = sectionTop + rect.height;
+                  
+                  // Check if viewport center is within this section (with a buffer)
+                  if (viewportCenter >= sectionTop - 100 && viewportCenter <= sectionBottom + 100) {
+                    bestSection = sections[i].id;
+                    break;
+                  }
+                }
+              }
+            }
+          }
+
+          // Only update if the section actually changed
+          if (lastActiveSection !== bestSection) {
+            lastActiveSection = bestSection;
+            updateSectionSafely(bestSection);
+          }
+          
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    // Debounced section update function
+    const updateSectionSafely = (newSection: string) => {
+      const now = Date.now();
+      const timeSinceLastChange = now - lastChangeTime.current;
+
+      // Clear any pending timeout
+      if (debounceTimeout.current) {
+        clearTimeout(debounceTimeout.current);
+        debounceTimeout.current = null;
       }
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sections[i].id);
-        if (section) {
-          const { offsetTop, offsetHeight } = section;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(sections[i].id);
-            break;
+      // If enough time has passed, update immediately
+      if (timeSinceLastChange >= MIN_CHANGE_INTERVAL) {
+        lastChangeTime.current = now;
+        pendingSection.current = null;
+        setActiveSection(newSection);
+      } else {
+        // Store the pending section and schedule update
+        pendingSection.current = newSection;
+        const remainingTime = MIN_CHANGE_INTERVAL - timeSinceLastChange;
+        debounceTimeout.current = setTimeout(() => {
+          if (pendingSection.current) {
+            lastChangeTime.current = Date.now();
+            setActiveSection(pendingSection.current);
+            pendingSection.current = null;
           }
-        }
+          debounceTimeout.current = null;
+        }, remainingTime);
       }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // Initial check
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (debounceTimeout.current) {
+        clearTimeout(debounceTimeout.current);
+      }
+    };
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -67,13 +155,13 @@ export default function NavigationBar() {
     >
       <div className="relative flex items-center gap-4">
         {/* Progress line - moved to left */}
-        <div className={`absolute left-0 top-0 bottom-0 w-px transition-colors ${
+        <div className={`absolute left-0 top-0 bottom-0 w-px transition-colors duration-200 ${
           activeSection === "process" ? "bg-white/20" : "bg-black/10"
         }`}></div>
         
         {/* Active indicator - moved to left */}
         <motion.div
-          className={`absolute left-0 w-1 transition-colors ${
+          className={`absolute left-0 w-1 transition-colors duration-200 ${
             activeSection === "process" ? "bg-white" : "bg-black"
           }`}
           style={{
@@ -119,18 +207,25 @@ export default function NavigationBar() {
               >
                 {/* Dot */}
                 <motion.div
-                  className={`w-2 h-2 rounded-full border transition-all ${finalBorderColor} ${finalBgColor}`}
+                  className={`w-2 h-2 rounded-full border transition-all transition-colors duration-200 ${finalBorderColor} ${finalBgColor}`}
                   animate={{
                     scale: isActive ? 1.5 : 1,
+                  }}
+                  transition={{
+                    scale: { duration: 0.2 },
                   }}
                 />
 
                 {/* Label */}
                 <motion.div
-                  className={`code-accent text-xs tracking-widest whitespace-nowrap transition-all ${finalTextColor}`}
+                  className={`code-accent text-xs tracking-widest whitespace-nowrap transition-all transition-colors duration-200 ${finalTextColor}`}
                   animate={{
                     opacity: isActive || isHovered ? 1 : 0,
                     x: isActive || isHovered ? 0 : 10,
+                  }}
+                  transition={{
+                    opacity: { duration: 0.2 },
+                    x: { duration: 0.2 },
                   }}
                 >
                   {section.name.toUpperCase()}
