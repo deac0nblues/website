@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #FAFAFA;
+  --foreground: #1A1A1A;
+  --accent: #000000;
+  --grid-color: rgba(0, 0, 0, 0.03);
+  --grid-size: 60px;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  position: relative;
+}
+
+/* Grid background pattern */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  pointer-events: none;
+  z-index: 0;
+  transition: background-size 0.1s ease-out;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .code-accent {
+    font-family: 'Courier New', monospace;
+    font-size: 0.85em;
+    letter-spacing: 0.1em;
+    /* Color is set via Tailwind classes or inline styles */
+  }
+  
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(0, 0, 0, 0.1) 20%,
+      rgba(0, 0, 0, 0.1) 80%,
+      transparent
+    );
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+  
+  .geometric-accent {
+    position: absolute;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+  }
+  
+  .schematic-line {
+    stroke: rgba(0, 0, 0, 0.1);
+    stroke-width: 1;
+    fill: none;
+  }
+  
+  .contrast-box {
+    background: #000000;
+    color: #FAFAFA;
+  }
+  
+  .contrast-box-inverse {
+    background: #FAFAFA;
+    color: #000000;
+    border: 2px solid #000000;
+  }
+}
