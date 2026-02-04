@@ -68,14 +68,9 @@ export default function Thinking() {
   return (
     <Section id="thinking">
       {/* Section label */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="text-lg font-light mb-12 gradient-text-iridescent"
-      >
-        What We're Thinking About
-      </motion.div>
+      <div className="text-2xl font-black uppercase mb-12 text-[#1a1a1a]" style={{ fontFamily: 'Bebas Neue, Impact, sans-serif' }}>
+        WHAT WE'RE THINKING ABOUT
+      </div>
       
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -102,47 +97,52 @@ export default function Thinking() {
               width: `${articles.length * 33.333}%`,
             }}
           >
-            {articles.map((article) => (
+            {articles.map((article, idx) => (
               <div
                 key={article.id}
                 className="flex-shrink-0 w-full md:w-1/3"
                 style={{ minWidth: "calc(33.333% - 1.5rem)" }}
               >
-                <motion.div 
-                  whileHover={{ scale: 1.02 }}
-                  className="glass-card p-8 h-full flex flex-col group cursor-pointer transition-all duration-500"
-                >
-                  <div className="text-sm font-light text-white/50 mb-4 uppercase tracking-wider">
-                    {article.type}
+                <div className="relative bg-white border-4 border-[#1a1a1a] p-8 h-full shadow-xl">
+                  {/* Number badge */}
+                  <div className="absolute -top-4 -left-4 w-12 h-12 bg-[#d32f2f] text-white flex items-center justify-center font-black text-xl" style={{ fontFamily: 'Bebas Neue, Impact, sans-serif' }}>
+                    {String(idx + 4).padStart(2, '0')}
                   </div>
-                  <h3 className="text-xl md:text-2xl font-light mb-4 tracking-tight gradient-text">
+                  
+                  {/* Corner accent */}
+                  <div className="absolute top-0 right-0 w-0 h-0 border-t-[25px] border-t-[#ff6f00] border-l-[25px] border-l-transparent" />
+                  
+                  <div className="text-xs font-bold uppercase tracking-[0.2em] text-[#455a64] mb-4" style={{ fontFamily: 'Oswald, sans-serif' }}>
+                    {article.type.toUpperCase()}
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-black uppercase mb-4 tracking-tight text-[#1a1a1a]" style={{ fontFamily: 'Bebas Neue, Impact, sans-serif' }}>
                     {article.title}
                   </h3>
-                  <p className="text-base text-white/60 leading-relaxed flex-grow">
+                  <p className="text-base leading-relaxed text-gray-700 flex-grow" style={{ fontFamily: 'Oswald, sans-serif' }}>
                     {article.excerpt}
                   </p>
-                </motion.div>
+                </div>
               </div>
             ))}
           </motion.div>
         </div>
 
-        {/* Rounded navigation dots with glow */}
+        {/* Bold numbered navigation */}
         <div className="flex justify-center gap-3 mt-12">
           {articles.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`h-3 w-3 rounded-full transition-all duration-300 ${
+              className={`w-12 h-12 border-4 border-[#1a1a1a] flex items-center justify-center font-black text-lg transition-all duration-300 ${
                 index === currentIndex
-                  ? "bg-gradient-to-r from-[#8b5cf6] to-[#6366f1] scale-125"
-                  : "bg-white/20 hover:bg-white/40"
+                  ? "bg-[#d32f2f] text-white"
+                  : "bg-white text-[#1a1a1a] hover:bg-[#ff6f00] hover:text-white"
               }`}
-              style={index === currentIndex ? {
-                boxShadow: '0 0 20px rgba(139, 92, 246, 0.6)',
-              } : {}}
+              style={{ fontFamily: 'Bebas Neue, Impact, sans-serif' }}
               aria-label={`Go to slide ${index + 1}`}
-            />
+            >
+              {index + 1}
+            </button>
           ))}
         </div>
       </motion.div>

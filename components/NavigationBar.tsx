@@ -139,44 +139,43 @@ export default function NavigationBar() {
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 1 }}
     >
-      <div className="glass-card p-4 flex flex-col gap-3">
-        {sections.map((section) => {
-          const isActive = activeSection === section.id;
-          return (
-            <motion.button
-              key={section.id}
-              onClick={() => scrollToSection(section.id)}
-              className="text-left relative"
-              whileHover={{ x: -4 }}
-              transition={{ type: "spring", stiffness: 400 }}
-            >
-              {isActive && (
-                <motion.div
-                  className="absolute left-0 top-0 bottom-0 w-1 rounded-full"
-                  layoutId="activeIndicator"
-                  style={{
-                    background: 'linear-gradient(135deg, #8b5cf6, #6366f1)',
-                    boxShadow: '0 0 10px rgba(139, 92, 246, 0.6)',
-                  }}
-                />
-              )}
-              <div
-                className={`text-sm font-light transition-colors duration-300 pl-4 ${
-                  isActive
-                    ? "gradient-text-iridescent"
-                    : isHovered
-                    ? "text-white/80"
-                    : "text-white/50"
-                }`}
-                style={isActive ? {
-                  textShadow: '0 0 20px rgba(139, 92, 246, 0.4)',
-                } : {}}
+      <div className="relative bg-white border-4 border-[#1a1a1a] p-4 shadow-xl">
+        {/* Corner accent */}
+        <div className="absolute top-0 right-0 w-0 h-0 border-t-[20px] border-t-[#d32f2f] border-l-[20px] border-l-transparent" />
+        
+        <div className="flex flex-col gap-3">
+          {sections.map((section) => {
+            const isActive = activeSection === section.id;
+            return (
+              <motion.button
+                key={section.id}
+                onClick={() => scrollToSection(section.id)}
+                className="text-left relative"
+                whileHover={{ x: -4 }}
+                transition={{ type: "spring", stiffness: 400 }}
               >
-                {section.name}
-              </div>
-            </motion.button>
-          );
-        })}
+                {isActive && (
+                  <motion.div
+                    className="absolute left-0 top-0 bottom-0 w-1 bg-[#d32f2f]"
+                    layoutId="activeIndicator"
+                  />
+                )}
+                <div
+                  className={`text-sm font-bold uppercase tracking-[0.2em] transition-colors duration-300 pl-3 ${
+                    isActive
+                      ? "text-[#d32f2f]"
+                      : isHovered
+                      ? "text-[#1a1a1a]"
+                      : "text-[#455a64]"
+                  }`}
+                  style={{ fontFamily: 'Oswald, sans-serif' }}
+                >
+                  {section.name}
+                </div>
+              </motion.button>
+            );
+          })}
+        </div>
       </div>
     </motion.div>
   );

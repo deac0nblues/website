@@ -6,6 +6,7 @@ import Section from "./Section";
 export default function Services() {
   const services = [
     {
+      number: "01",
       title: "Strategic Systems Design",
       content: (
         <>
@@ -19,6 +20,7 @@ export default function Services() {
       ),
     },
     {
+      number: "02",
       title: "Production Engineering",
       content: (
         <>
@@ -32,6 +34,7 @@ export default function Services() {
       ),
     },
     {
+      number: "03",
       title: "Systems Innovation",
       content: (
         <>
@@ -49,16 +52,11 @@ export default function Services() {
   return (
     <Section id="services">
       {/* Section label */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="text-lg font-light mb-12 gradient-text-iridescent"
-      >
-        What We Do
-      </motion.div>
+      <div className="text-2xl font-black uppercase mb-12 text-[#1a1a1a]" style={{ fontFamily: 'Bebas Neue, Impact, sans-serif' }}>
+        WHAT WE DO
+      </div>
       
-      <div className="space-y-6">
+      <div className="space-y-8">
         {services.map((service, index) => (
           <motion.div
             key={service.title}
@@ -66,29 +64,41 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
-            whileHover={{ scale: 1.02 }}
-            className="glass-card p-10 group cursor-pointer transition-all duration-500"
+            className="relative"
           >
-            <h2 
-              className="text-3xl md:text-4xl font-light mb-6 tracking-tight gradient-text"
-            >
-              {service.title}
-            </h2>
-            <div className="text-lg text-white/60 leading-relaxed">
-              {service.content}
+            {/* Large number background */}
+            <div className="absolute -left-8 -top-8 text-[180px] font-black text-[#ff6f00] opacity-10 leading-none" style={{ fontFamily: 'Bebas Neue, Impact, sans-serif' }}>
+              {service.number}
             </div>
             
-            {/* Animated gradient border on hover */}
-            <div 
-              className="absolute inset-0 rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-              style={{
-                background: 'linear-gradient(135deg, #8b5cf6, #6366f1, #ec4899)',
-                WebkitMaskImage: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                WebkitMaskComposite: 'xor',
-                maskComposite: 'exclude',
-                padding: '2px',
-              }}
-            />
+            <div className="relative bg-white p-10 border-4 border-[#1a1a1a] shadow-xl">
+              {/* Corner accent */}
+              <div className="absolute top-0 right-0 w-0 h-0 border-t-[40px] border-t-[#d32f2f] border-l-[40px] border-l-transparent" />
+              
+              <div className="flex items-start gap-8">
+                {/* Number badge */}
+                <div className="flex-shrink-0 w-20 h-20 bg-[#1a1a1a] text-[#ff6f00] flex items-center justify-center font-black text-3xl" style={{ fontFamily: 'Bebas Neue, Impact, sans-serif' }}>
+                  {service.number}
+                </div>
+                
+                <div>
+                  <h2 className="text-4xl font-black uppercase mb-4 tracking-tight text-[#1a1a1a]" style={{ fontFamily: 'Bebas Neue, Impact, sans-serif' }}>
+                    {service.title}
+                  </h2>
+                  <div className="text-lg leading-relaxed text-gray-700" style={{ fontFamily: 'Oswald, sans-serif' }}>
+                    {service.content}
+                  </div>
+                </div>
+              </div>
+              
+              {/* Diagonal stripe accent */}
+              <div 
+                className="absolute bottom-0 left-0 w-full h-3 bg-[#ff6f00]"
+                style={{
+                  backgroundImage: 'repeating-linear-gradient(45deg, #ff6f00, #ff6f00 10px, #d32f2f 10px, #d32f2f 20px)'
+                }}
+              />
+            </div>
           </motion.div>
         ))}
       </div>
