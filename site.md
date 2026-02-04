@@ -1,193 +1,108 @@
-Quicksilver Labs — Website Content & Structure
-Overall Tone & Design Direction
+# Quicksilver Labs — Website Copy
 
-Tone
+## Design Direction
 
-Precise, engineering-led, restrained
+**Tone:** Precise, engineering-led, restrained. Confident but not loud. Slightly ominous, never hypey. "Concrete and barbed wire."
 
-Confident but not loud
+**Design:** Minimalist, industrial, editorial. Strong typography, restrained color palette. White/off-white backgrounds with dark accents. Sparse motion; nothing playful. Content > visuals. Think: engineering firm, not agency.
 
-Slightly ominous, never hypey
+---
 
-“Concrete and barbed wire”
+## Hero
 
-Design
+**AI infrastructure built to create durable advantage.**
 
-Minimalist, industrial, editorial
+Small, senior teams. Strategic thinking. Production systems.
 
-Strong typography, restrained color palette
+[Button: Get in touch]
 
-White / off-white backgrounds with dark accents
+---
 
-Sparse motion; nothing playful
+## What We Do
 
-Content > visuals
+### Strategic Systems Design
 
-Think: engineering firm, not agency.
+We help organizations determine where AI belongs in their business - and what must change to make it work.
 
-1. Home / Hero
-Purpose
+This isn't model selection or vendor evaluation. It's strategic systems thinking: understanding how AI reshapes workflows, incentives, data ownership, and competitive position. We work with leadership teams to map the territory, identify leverage points, and define what success actually requires.
 
-Immediately establish credibility and differentiation.
-Signal that you understand why AI fails—and that you operate above the model layer.
+### Production Engineering
 
-Hero Line
+We field small, senior teams to design, build, and deploy AI systems on aggressive timelines.
 
-AI complexity lives beyond the model.
+We take end-to-end responsibility: architecture, implementation, deployment, and ownership transfer. Our engagements are time-boxed, production-focused, and designed to leave your team with systems they can operate and evolve.
 
-Optional sub-line (small text):
+### Systems Innovation
 
-Engineering AI systems that hold up under pressure.
+We develop new approaches, frameworks, and tooling that advance the craft of AI systems engineering.
 
-Supporting Paragraph
+This work is results-driven, not academic. Unlike consulting firms that bill clients to reinvent the wheel on every project, we build reusable systems that compound over time. Our innovation work makes us faster and more reliable - which means better outcomes for clients and less inefficiency overall.
 
-Adopting AI is a strategic investment with real upside and real risk. When AI fails, it is rarely a model problem; it is almost always a systems and engineering problem.
+---
 
-Quicksilver Labs helps organizations capture growth from AI by outlining risks early, validating that they are solvable, and engineering systems that withstand them.
+## How We Work
 
-CTA (subtle)
+We run two types of engagements, both time-boxed and senior-led.
 
-Work with us
+### Strategy Engagements
 
-Start a systems review
+Fast-turn strategic work with leadership teams, typically completed in under a month. We assess where AI creates leverage in your business, map technical and organizational risks, validate that they're solvable, and deliver a concrete plan with clear ownership and next steps.
 
-2. Positioning (Why We Exist)
-Purpose
+No six-month discovery phases. No PowerPoints left to gather dust. You get decisive direction from people who've built these systems before.
 
-Frame AI as infrastructure and establish philosophical stance.
+### Build Engagements
 
-Copy
+End-to-end system design and deployment. We take responsibility for architecture, implementation, production deployment, and ownership transfer.
 
-We design and deploy cutting-edge AI systems backed by disciplined engineering and statistical expertise.
+We don't sell perpetual services. We build systems, document them, transfer ownership, and teach your team how to operate and evolve what we deliver.
 
-Our job is to tell you where your business must go to compete in the age of AI—and to build the systems that get you there.
+---
 
-Design note: wide margins, generous whitespace. This should read like a manifesto, not marketing copy.
+## What We're Thinking About
 
-3. What We Do
-Purpose
+[Carousel of position papers, blog posts, research notes]
 
-Speak to three audiences without calling them out explicitly.
+---
 
-Section Layout
-
-Three vertical blocks or rows. Same visual weight.
-
-AI-Native Transformation
-
-Audience: Startups, founders, exec teams
-
-We help organizations reinvent themselves as AI-native.
-
-That means more than adding models—it means rethinking data flows, incentives, workflows, and ownership. We work with leadership teams to determine where AI belongs in the business, what risks matter, and what systems must exist for AI to create durable value.
-
-Build & Deploy
-
-Audience: Larger buyers, operators
-
-We field small, senior teams to design, build, and deploy production AI systems on aggressive timelines.
-
-We take responsibility for architecture, implementation, and deployment—working end-to-end until systems are live, stable, and owned by your team.
-
-Systems Craft
-
-Audience: Studio / internal signal
-
-We build our own internal tools, frameworks, and delivery infrastructure to accelerate execution and reduce failure modes.
-
-These systems are refined in production and reused where appropriate, allowing us to move faster without cutting corners.
-
-(Do not mention investors.)
-
-4. How We Work
-Purpose
-
-Differentiate process. Kill perpetual consulting expectations.
-
-Section Title
-
-AI Systems & Operations Sprint (AISOS)
-
-Copy
-
-Our work is organized around focused AI Systems & Operations Sprints.
-
-We identify system-level failure modes early, validate that risks are solvable, and engineer solutions designed for deployment, ownership, and long-term operation.
-
-We do not sell perpetual services. We build systems, document them, and teach your team how to operate and evolve what we deliver.
-
-Optional bullets (short):
-Time-boxed, senior-led engagements
-
-Production-first engineering
-
-Explicit ownership transfer
-
-5. What We Don’t Do
-Purpose
-
-Build trust by setting boundaries.
-
-Copy (short list)
-
-We don’t:
-
-Sell miracles or black boxes
-
-Treat organizational problems as model problems
-
-Run open-ended consulting engagements
-
-Leave clients dependent on us
-
-Ship systems we can’t explain or operate
-
-Design: lighter text, smaller type. Almost footnote-like.
-
-6. Who We Are
-Purpose
-
-Establish credibility and worldview.
-
-Copy
+## Who We Are
 
 Quicksilver Labs is an engineering-led AI firm built by people who have spent years designing, delivering, and operating complex technical systems in production. We come from applied mathematics, engineering, and large-scale technical delivery backgrounds.
 
-We believe AI is most dangerous when treated as a novelty and most powerful when treated as infrastructure. We focus on systems that must function under real constraints: imperfect data, regulatory pressure, operational complexity, and long-term ownership.
+We believe AI creates durable advantage when treated as infrastructure, not novelty. We focus on systems that must function under real constraints: imperfect data, regulatory pressure, operational complexity, and long-term ownership.
 
 Quicksilver Labs exists to close the gap between knowing where AI should go and taking responsibility for building what it takes to get there.
 
-7. Leadership
-Purpose
+---
 
-Founder credibility, not ego.
+## Leadership
 
-Ben Letson — Founder
+### Dan Watkins — CEO
+
+Dan Watkins is a technical executive with deep experience building and scaling engineering organizations that deliver complex systems in production. He has spent his career at the intersection of technical execution and business strategy, leading teams through high-growth phases and operationalizing AI systems at enterprise scale.
+
+His work focuses on translating technical capability into durable business value. He has built organizations that treat AI as infrastructure—systems that must function reliably under real-world constraints, regulatory requirements, and long-term operational demands.
+
+### Ben Letson — CTO & Founder
 
 Ben Letson is a technical founder with a PhD background and years of experience designing and delivering complex AI systems in production environments. He grew up in early-stage technical teams, helped scale systems through high-growth phases, and went on to operate at large-scale enterprise delivery.
 
-His work sits at the intersection of applied mathematics, engineering, and execution. He has spent his career watching AI fail for predictable reasons—and building the systems that prevent those failures.
+His work sits at the intersection of applied mathematics, engineering, and execution. He has spent his career understanding why AI systems succeed or fail in production - and building the infrastructure that makes them work.
 
-Design: one photo, restrained, no flair.
+---
 
-8. Footer / Contact
+## Footer / Contact
 
-Minimal.
+**Minimal design:**
+- Contact link
+- No social clutter
+- Optional: "Based in Boston and Houston, working globally"
 
-Contact link
+---
 
-No social clutter
+## Visual / UX Notes
 
-Possibly: Based in Boston and Houston, working globally
-
-Visual / UX Notes for Cursor
-
-Use strong typographic hierarchy
-
-Avoid gradients, blobs, illustrations
-
-No stock AI imagery
-
-If visuals are used: abstract systems, schematics, grids
-
-Dark mode optional, but not required
+- Use strong typographic hierarchy
+- Avoid gradients, blobs, illustrations
+- No stock AI imagery
+- If visuals are used: abstract systems, schematics, grids
+- Dark mode optional, but not required

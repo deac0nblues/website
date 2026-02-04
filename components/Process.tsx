@@ -133,35 +133,39 @@ export default function Process() {
         </div>
         
         <AnimatedHeading
-          className="text-3xl md:text-4xl font-medium mb-8 text-[#FAFAFA]"
+          className="text-3xl md:text-4xl font-medium mb-6 text-[#FAFAFA]"
           delay={0.1}
         >
-          AI Systems & Operations Sprint (AISOS)
+          How We Work
         </AnimatedHeading>
         
-        <div className="space-y-6 text-[#E5E5E5] leading-relaxed text-lg mb-8">
+        <div className="space-y-8 text-[#E5E5E5] leading-relaxed text-lg mb-12">
           <p>
-            Our work is organized around focused AI Systems & Operations Sprints.
+            We run two types of engagements, both time-boxed and senior-led.
           </p>
-          <p>
-            We identify system-level failure modes early, validate that risks are solvable, and engineer solutions designed for deployment, ownership, and long-term operation.
-          </p>
-          <p>
-            We do not sell perpetual services. We build systems, document them, and teach your team how to operate and evolve what we deliver.
-          </p>
+          
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-xl md:text-2xl font-medium mb-4 text-[#FAFAFA]">Strategy Engagements</h3>
+              <p>
+                Fast-turn strategic work with leadership teams, typically completed in under a month. We assess where AI creates leverage in your business, map technical and organizational risks, validate that they're solvable, and deliver a concrete plan with clear ownership and next steps.
+              </p>
+              <p className="mt-4">
+                No six-month discovery phases. No PowerPoints left to gather dust. You get decisive direction from people who've built these systems before.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-xl md:text-2xl font-medium mb-4 text-[#FAFAFA]">Build Engagements</h3>
+              <p>
+                End-to-end system design and deployment. We take responsibility for architecture, implementation, production deployment, and ownership transfer.
+              </p>
+              <p className="mt-4">
+                We don't sell perpetual services. We build systems, document them, transfer ownership, and teach your team how to operate and evolve what we deliver.
+              </p>
+            </div>
+          </div>
         </div>
-        
-        {/* Whitepaper button */}
-        <motion.a
-          href="/assets/documents/Quicksilver_Labs_AISOS_Whitepaper.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-200 font-medium tracking-wider text-sm code-accent"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          READ WHITEPAPER →
-        </motion.a>
       </motion.div>
     </Section>
   );

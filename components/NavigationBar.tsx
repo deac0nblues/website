@@ -6,8 +6,8 @@ import { motion } from "framer-motion";
 const sections = [
   { id: "hero", name: "Init" },
   { id: "services", name: "Services" },
-  { id: "process", name: "AISOS" },
-  { id: "boundaries", name: "Boundaries" },
+  { id: "process", name: "How We Work" },
+  { id: "thinking", name: "Thinking" },
   { id: "about", name: "About" },
   { id: "contact", name: "Contact" },
 ];
@@ -186,16 +186,9 @@ export default function NavigationBar() {
               ? (isActive ? "bg-white" : "bg-transparent")
               : (isActive ? "bg-black" : "bg-transparent");
             
-            // Force black text for boundaries section (light background)
-            const finalTextColor = activeSection === "boundaries" 
-              ? (isActive ? "text-black" : isHovered ? "text-black/60" : "text-black/30")
-              : textColor;
-            const finalBorderColor = activeSection === "boundaries"
-              ? (isActive ? "border-black" : "border-black/30")
-              : borderColor;
-            const finalBgColor = activeSection === "boundaries"
-              ? (isActive ? "bg-black" : "bg-transparent")
-              : bgColor;
+            const finalTextColor = textColor;
+            const finalBorderColor = borderColor;
+            const finalBgColor = bgColor;
             
             return (
               <motion.button

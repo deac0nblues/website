@@ -5,7 +5,7 @@ import Hero from "@/components/Hero";
 import Section from "@/components/Section";
 import Services from "@/components/Services";
 import Process from "@/components/Process";
-import Boundaries from "@/components/Boundaries";
+import Thinking from "@/components/Thinking";
 import About from "@/components/About";
 import Leadership from "@/components/Leadership";
 import Footer from "@/components/Footer";
@@ -103,7 +103,7 @@ export default function Home() {
 
       <Services />
       <Process />
-      <Boundaries />
+      <Thinking />
       <About />
       <Leadership />
       

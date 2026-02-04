@@ -8,40 +8,40 @@ import MouseReactive from "./MouseReactive";
 export default function Services() {
   const services = [
     {
-      title: "AI-Native Transformation",
+      title: "Strategic Systems Design",
       content: (
         <>
           <p className="mb-4">
-            We help organizations reinvent themselves as AI-native.
+            We help organizations determine where AI belongs in their business - and what must change to make it work.
           </p>
           <p>
-            That means more than adding models—it means rethinking data flows, incentives, workflows, and ownership. We work with leadership teams to determine where AI belongs in the business, what risks matter, and what systems must exist for AI to create durable value.
+            This isn't model selection or vendor evaluation. It's strategic systems thinking: understanding how AI reshapes workflows, incentives, data ownership, and competitive position. We work with leadership teams to map the territory, identify leverage points, and define what success actually requires.
           </p>
         </>
       ),
     },
     {
-      title: "Build & Deploy",
+      title: "Production Engineering",
       content: (
         <>
           <p className="mb-4">
-            We field small, senior teams to design, build, and deploy production AI systems on aggressive timelines.
+            We field small, senior teams to design, build, and deploy AI systems on aggressive timelines.
           </p>
           <p>
-            We take responsibility for architecture, implementation, and deployment—working end-to-end until systems are live, stable, and owned by your team.
+            We take end-to-end responsibility: architecture, implementation, deployment, and ownership transfer. Our engagements are time-boxed, production-focused, and designed to leave your team with systems they can operate and evolve.
           </p>
         </>
       ),
     },
     {
-      title: "Systems Craft",
+      title: "Systems Innovation",
       content: (
         <>
           <p className="mb-4">
-            We build our own internal tools, frameworks, and delivery infrastructure to accelerate execution and reduce failure modes.
+            We develop new approaches, frameworks, and tooling that advance the craft of AI systems engineering.
           </p>
           <p>
-            These systems are refined in production and reused where appropriate, allowing us to move faster without cutting corners.
+            This work is results-driven, not academic. Unlike consulting firms that bill clients to reinvent the wheel on every project, we build reusable systems that compound over time. Our innovation work makes us faster and more reliable - which means better outcomes for clients and less inefficiency overall.
           </p>
         </>
       ),

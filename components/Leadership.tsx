@@ -115,7 +115,7 @@ export default function Leadership() {
               Ben Letson is a technical founder with a PhD background and years of experience designing and delivering complex AI systems in production environments. He grew up in early-stage technical teams, helped scale systems through high-growth phases, and went on to operate at large-scale enterprise delivery.
             </p>
             <p>
-              His work sits at the intersection of applied mathematics, engineering, and execution. He has spent his career watching AI fail for predictable reasons—and building the systems that prevent those failures.
+              His work sits at the intersection of applied mathematics, engineering, and execution. He has spent his career understanding why AI systems succeed or fail in production - and building the infrastructure that makes them work.
             </p>
           </div>
         </div>

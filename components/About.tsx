@@ -69,7 +69,7 @@ export default function About() {
             Quicksilver Labs is an engineering-led AI firm built by people who have spent years designing, delivering, and operating complex technical systems in production. We come from applied mathematics, engineering, and large-scale technical delivery backgrounds.
           </p>
           <p className="mb-10">
-            We believe AI is most dangerous when treated as a novelty and most powerful when treated as infrastructure. We focus on systems that must function under real constraints: imperfect data, regulatory pressure, operational complexity, and long-term ownership.
+            We believe AI creates durable advantage when treated as infrastructure, not novelty. We focus on systems that must function under real constraints: imperfect data, regulatory pressure, operational complexity, and long-term ownership.
           </p>
           <p className="font-medium text-[#000000] relative mb-0">
             Quicksilver Labs exists to close the gap between knowing where AI should go and taking responsibility for building what it takes to get there.

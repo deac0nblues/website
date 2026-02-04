@@ -115,52 +115,30 @@ export default function Hero() {
           className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium tracking-tight mb-6 text-[#000000] relative leading-tight"
           delay={0.1}
         >
-          AI complexity lives beyond the model.
+          AI infrastructure built to create durable advantage.
         </AnimatedHeading>
         
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-lg md:text-xl text-[#2D2D2D] mb-8"
+          className="text-lg md:text-xl text-[#2D2D2D] mb-12"
         >
-          AI drives growth. Engineering manages risk.
+          Small, senior teams. Strategic thinking. Production systems.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-2xl mx-auto mb-12 text-[#1A1A1A] leading-relaxed"
-        >
-          <p className="mb-4">
-            Adopting AI is a strategic investment with real upside and real risk. If AI fails, it is rarely a model problem; it is almost always a systems and engineering problem.
-          </p>
-          <p>
-            Quicksilver Labs helps organizations capture growth from AI by outlining risks early, validating that they are solvable, and engineering systems that withstand them.
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          className="flex justify-center items-center"
         >
           <a
             href="mailto:ben@quicksilverlab.ai"
             className="px-8 py-3 border-2 border-[#000000] bg-[#000000] text-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-[#000000] transition-all duration-200 font-medium relative group"
           >
-            <span className="relative z-10">Work with us</span>
+            <span className="relative z-10">Get in touch</span>
             <span className="absolute inset-0 border-2 border-[#000000] opacity-0 group-hover:opacity-100 transition-opacity"></span>
-          </a>
-          <a
-            href="/assets/documents/Quicksilver_Labs_AISOS_Whitepaper.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-8 py-3 border-2 border-[#000000] text-[#000000] hover:bg-[#000000] hover:text-[#FAFAFA] transition-all duration-200 font-medium"
-          >
-            Start a systems review
           </a>
         </motion.div>
       </div>
