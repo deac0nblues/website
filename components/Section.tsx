@@ -8,15 +8,21 @@ interface SectionProps {
 }
 
 export default function Section({ children, className = "", variant = "default", id }: SectionProps) {
-  const bgClass = variant === "dark" ? "bg-[#000000] text-[#FAFAFA]" : variant === "accent" ? "bg-[#1A1A1A] text-[#FAFAFA]" : "";
-  
+  // All sections use dark navy background
   return (
-    <section id={id} className={`py-24 px-6 relative ${bgClass} ${className}`}>
-      {/* Section divider line */}
-      {variant === "default" && (
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-black/10 to-transparent"></div>
-      )}
-      <div className="max-w-4xl mx-auto relative z-10">{children}</div>
+    <section id={id} className={`py-24 px-6 md:px-16 relative bg-[#0a0e27] text-white ${className}`}>
+      {/* Grid overlay */}
+      <div 
+        className="absolute inset-0 opacity-30 pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(90deg, rgba(0,255,150,0.1) 1px, transparent 1px),
+            linear-gradient(0deg, rgba(0,255,150,0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '20px 20px'
+        }}
+      />
+      <div className="max-w-7xl mx-auto relative z-10">{children}</div>
     </section>
   );
 }
