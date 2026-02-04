@@ -53,9 +53,9 @@ export default function Services() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="text-lg font-light mb-12 gradient-text-iridescent"
+        className="text-sm mb-12 text-glow"
       >
-        What We Do
+        {'>'} WHAT WE DO
       </motion.div>
       
       <div className="space-y-6">
@@ -66,29 +66,50 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
-            whileHover={{ scale: 1.02 }}
-            className="glass-card p-10 group cursor-pointer transition-all duration-500"
+            className="terminal-window p-8 group cursor-pointer relative"
           >
-            <h2 
-              className="text-3xl md:text-4xl font-light mb-6 tracking-tight gradient-text"
-            >
-              {service.title}
-            </h2>
-            <div className="text-lg text-white/60 leading-relaxed">
-              {service.content}
+            {/* Glitch effect on hover */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+              <div className="absolute inset-0 bg-[#00ff41] mix-blend-screen opacity-10 translate-x-1" />
+              <div className="absolute inset-0 bg-[#ff3366] mix-blend-screen opacity-10 -translate-x-1" />
             </div>
             
-            {/* Animated gradient border on hover */}
-            <div 
-              className="absolute inset-0 rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-              style={{
-                background: 'linear-gradient(135deg, #8b5cf6, #6366f1, #ec4899)',
-                WebkitMaskImage: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                WebkitMaskComposite: 'xor',
-                maskComposite: 'exclude',
-                padding: '2px',
-              }}
-            />
+            <div className="relative z-10">
+              {/* Index header */}
+              <div className="flex items-center gap-4 mb-4">
+                <div className="text-4xl font-bold text-[#ffb000] text-glow-amber">
+                  {String(index + 1).padStart(2, '0')}
+                </div>
+                <div className="flex-1 h-px bg-[#00ff41] opacity-30" />
+                <div className="text-xs text-white">
+                  FREQ {(index + 1) * 100} HZ
+                </div>
+              </div>
+              
+              {/* Title */}
+              <h2 className="text-2xl mb-4 uppercase tracking-wider text-glow">
+                {service.title}
+              </h2>
+              
+              {/* Description */}
+              <div className="text-sm leading-relaxed text-white mb-4">
+                {service.content}
+              </div>
+              
+              {/* Signal strength indicator */}
+              <div className="flex items-center gap-2">
+                <div className="text-xs text-[#ffb000]">[SIGNAL]</div>
+                <div className="flex-1 h-2 bg-[#1a1a1a] relative overflow-hidden">
+                  <div 
+                    className="absolute inset-y-0 left-0 signal-bar"
+                    style={{ 
+                      width: `${85 + index * 5}%`,
+                    }}
+                  />
+                </div>
+                <div className="text-xs text-glow">{85 + index * 5}%</div>
+              </div>
+            </div>
           </motion.div>
         ))}
       </div>

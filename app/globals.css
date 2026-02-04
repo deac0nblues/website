@@ -2,18 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
 :root {
-  --background-start: #000000;
-  --background-end: #1a0f2e;
-  --purple: #8b5cf6;
-  --blue: #6366f1;
-  --pink: #ec4899;
+  --background: #0a0a0a;
+  --primary-text: #00ff41;
+  --secondary: #ffb000;
+  --error: #ff3366;
+  --data: #00d9ff;
+  --noise: #4a4a4a;
 }
 
 body {
-  color: #ffffff;
-  background: linear-gradient(to bottom, var(--background-start), var(--background-end));
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--primary-text);
+  background-color: var(--background);
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
   position: relative;
   min-height: 100vh;
   overflow-x: hidden;
@@ -22,42 +25,136 @@ body {
 main {
   position: relative;
   z-index: 1;
-  background: transparent;
+  background-color: var(--background);
 }
 
-@keyframes morph {
+/* Scanline overlay */
+.scanline-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.1;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    var(--primary-text) 2px,
+    var(--primary-text) 4px
+  );
+  animation: scan 8s linear infinite;
+}
+
+/* Noise texture */
+.noise-texture {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='6.29' numOctaves='6' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  animation: noise 0.2s steps(10) infinite;
+}
+
+/* Binary pattern */
+.binary-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  font-size: 12px;
+  line-height: 1;
+  overflow: hidden;
+  pointer-events: none;
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--primary-text);
+}
+
+/* Terminal window */
+.terminal-window {
+  border: 1px solid var(--primary-text);
+  background-color: var(--background);
+  position: relative;
+}
+
+.terminal-window::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-shadow: 0 0 10px var(--primary-text), inset 0 0 10px var(--primary-text);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Text glow */
+.text-glow {
+  text-shadow: 0 0 5px var(--primary-text), 0 0 10px var(--primary-text);
+}
+
+.text-glow-amber {
+  text-shadow: 0 0 5px var(--secondary), 0 0 10px var(--secondary);
+}
+
+/* Glitch effect */
+.glitch-effect {
+  position: relative;
+}
+
+.glitch-effect:hover::before,
+.glitch-effect:hover::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.glitch-effect:hover::before {
+  color: var(--error);
+  transform: translate(2px, 0);
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+}
+
+.glitch-effect:hover::after {
+  color: var(--data);
+  transform: translate(-2px, 0);
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+}
+
+/* Cursor blink */
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes scan {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes noise {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -5%); }
+  20% { transform: translate(-10%, 5%); }
+  30% { transform: translate(5%, -10%); }
+  40% { transform: translate(-5%, 15%); }
+  50% { transform: translate(-10%, 5%); }
+  60% { transform: translate(15%, 0); }
+  70% { transform: translate(0, 10%); }
+  80% { transform: translate(-15%, 0); }
+  90% { transform: translate(10%, 5%); }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes waveform {
   0%, 100% { 
-    border-radius: 60% 40% 70% 30% / 60% 30% 70% 40%; 
+    d: path("M0,50 Q150,10 300,50 T600,50 T900,50 T1200,50");
   }
   50% { 
-    border-radius: 30% 70% 50% 50% / 40% 60% 40% 60%; 
-  }
-}
-
-@keyframes float {
-  0%, 100% { 
-    transform: translateY(0) scale(1); 
-  }
-  50% { 
-    transform: translateY(-30px) scale(1.1); 
-  }
-}
-
-@keyframes gradient-shift {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-@keyframes glow-pulse {
-  0%, 100% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
+    d: path("M0,50 Q150,90 300,50 T600,50 T900,50 T1200,50");
   }
 }
 
@@ -66,65 +163,14 @@ main {
     text-wrap: balance;
   }
   
-  .glass-panel {
-    backdrop-filter: blur(20px);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 48px;
-    box-shadow: 0 8px 32px 0 rgba(139, 92, 246, 0.1), inset 0 0 80px rgba(255, 255, 255, 0.02);
+  .signal-bar {
+    background-color: var(--primary-text);
+    box-shadow: 0 0 10px var(--primary-text);
+    transition: height 0.3s ease;
   }
   
-  .glass-card {
-    backdrop-filter: blur(20px);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 32px;
-    box-shadow: 0 8px 32px 0 rgba(139, 92, 246, 0.05);
-  }
-  
-  .gradient-text {
-    background: linear-gradient(135deg, #ffffff 0%, #e0d0ff 50%, #c4b5fd 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 0 0 40px rgba(139, 92, 246, 0.3);
-  }
-  
-  .gradient-text-iridescent {
-    background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #ec4899 100%);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradient-shift 5s ease infinite;
-    text-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
-  }
-  
-  .chrome-text {
-    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 50%, #8b5cf6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-  }
-  
-  .text-glow {
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-  }
-  
-  .animate-morph {
-    animation: morph 20s ease-in-out infinite;
-  }
-  
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-  
-  .animate-float-delayed {
-    animation: float 8s ease-in-out infinite 2s;
-  }
-  
-  .animate-glow-pulse {
-    animation: glow-pulse 3s ease-in-out infinite;
+  .signal-bar-amber {
+    background-color: var(--secondary);
+    box-shadow: 0 0 10px var(--secondary);
   }
 }

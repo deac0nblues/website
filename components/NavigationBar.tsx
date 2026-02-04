@@ -4,13 +4,13 @@ import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 
 const sections = [
-  { id: "hero", name: "Overview" },
-  { id: "services", name: "Services" },
-  { id: "process", name: "How We Work" },
-  { id: "thinking", name: "Thinking" },
-  { id: "about", name: "About" },
-  { id: "leadership", name: "Leadership" },
-  { id: "contact", name: "Contact" },
+  { id: "hero", name: "OVERVIEW" },
+  { id: "services", name: "SERVICES" },
+  { id: "process", name: "HOW WE WORK" },
+  { id: "thinking", name: "THINKING" },
+  { id: "about", name: "ABOUT" },
+  { id: "leadership", name: "LEADERSHIP" },
+  { id: "contact", name: "CONTACT" },
 ];
 
 export default function NavigationBar() {
@@ -139,44 +139,39 @@ export default function NavigationBar() {
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 1 }}
     >
-      <div className="glass-card p-4 flex flex-col gap-3">
-        {sections.map((section) => {
-          const isActive = activeSection === section.id;
-          return (
-            <motion.button
-              key={section.id}
-              onClick={() => scrollToSection(section.id)}
-              className="text-left relative"
-              whileHover={{ x: -4 }}
-              transition={{ type: "spring", stiffness: 400 }}
-            >
-              {isActive && (
-                <motion.div
-                  className="absolute left-0 top-0 bottom-0 w-1 rounded-full"
-                  layoutId="activeIndicator"
-                  style={{
-                    background: 'linear-gradient(135deg, #8b5cf6, #6366f1)',
-                    boxShadow: '0 0 10px rgba(139, 92, 246, 0.6)',
-                  }}
-                />
-              )}
-              <div
-                className={`text-sm font-light transition-colors duration-300 pl-4 ${
-                  isActive
-                    ? "gradient-text-iridescent"
-                    : isHovered
-                    ? "text-white/80"
-                    : "text-white/50"
-                }`}
-                style={isActive ? {
-                  textShadow: '0 0 20px rgba(139, 92, 246, 0.4)',
-                } : {}}
+      <div className="terminal-window p-4">
+        <div className="flex flex-col gap-3">
+          {sections.map((section) => {
+            const isActive = activeSection === section.id;
+            return (
+              <motion.button
+                key={section.id}
+                onClick={() => scrollToSection(section.id)}
+                className="text-left relative"
+                whileHover={{ x: -4 }}
+                transition={{ type: "spring", stiffness: 400 }}
               >
-                {section.name}
-              </div>
-            </motion.button>
-          );
-        })}
+                {isActive && (
+                  <motion.div
+                    className="absolute left-0 top-0 bottom-0 w-1 signal-bar"
+                    layoutId="activeIndicator"
+                  />
+                )}
+                <div
+                  className={`text-xs transition-colors duration-300 pl-4 ${
+                    isActive
+                      ? "text-[#00ff41] text-glow"
+                      : isHovered
+                      ? "text-[#ffb000] text-glow-amber"
+                      : "text-[#4a4a4a]"
+                  }`}
+                >
+                  {'>'} {section.name}
+                </div>
+              </motion.button>
+            );
+          })}
+        </div>
       </div>
     </motion.div>
   );
