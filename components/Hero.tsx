@@ -1,28 +1,22 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import MouseReactive from "./MouseReactive";
 import AnimatedHeading from "./AnimatedHeading";
 
 export default function Hero() {
   return (
     <section className="min-h-screen flex items-center justify-center px-6 py-24 relative overflow-hidden">
-      {/* Logo - top center, above background but below visual accents */}
+      {/* Logo text - top center, above background but below visual accents */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
         className="absolute top-8 left-0 right-0 flex justify-center items-center z-[1]"
       >
-        <Image
-          src="/assets/images/Generated Image January 12, 2026 - 1_52PM.jpeg"
-          alt="Quicksilver Labs"
-          width={600}
-          height={200}
-          className="h-32 md:h-48 w-auto object-contain"
-          priority
-        />
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight text-[#000000]">
+          Quicksilver AI Labs
+        </h1>
       </motion.div>
       
       {/* Grid overlay - on top of logo but below visual accents */}
