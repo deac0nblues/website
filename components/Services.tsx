@@ -2,12 +2,11 @@
 
 import { motion } from "framer-motion";
 import Section from "./Section";
-import AnimatedHeading from "./AnimatedHeading";
-import MouseReactive from "./MouseReactive";
 
 export default function Services() {
   const services = [
     {
+      number: "01",
       title: "Strategic Systems Design",
       content: (
         <>
@@ -21,6 +20,7 @@ export default function Services() {
       ),
     },
     {
+      number: "02",
       title: "Production Engineering",
       content: (
         <>
@@ -34,6 +34,7 @@ export default function Services() {
       ),
     },
     {
+      number: "03",
       title: "Systems Innovation",
       content: (
         <>
@@ -50,60 +51,12 @@ export default function Services() {
 
   return (
     <Section id="services">
-      {/* Background grid pattern */}
-      <div className="absolute inset-0 opacity-[0.01] pointer-events-none" style={{
-        backgroundImage: `
-          linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px)
-        `,
-        backgroundSize: '50px 50px'
-      }}></div>
+      {/* Section label */}
+      <div className="text-[11px] font-bold uppercase tracking-[2px] mb-12">
+        WHAT WE DO
+      </div>
       
-      {/* Floating geometric shapes */}
-      <MouseReactive className="absolute top-20 right-20 w-20 h-20 hidden xl:block" intensity={6}>
-        <motion.div 
-          className="w-full h-full border border-black/5 rotate-45"
-          animate={{ rotate: [45, 50, 45] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        ></motion.div>
-      </MouseReactive>
-      <MouseReactive className="absolute bottom-20 left-20 w-16 h-16 hidden lg:block" intensity={6}>
-        <motion.div 
-          className="w-full h-full border border-black/5 -rotate-45"
-          animate={{ rotate: [-45, -50, -45] }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-        ></motion.div>
-      </MouseReactive>
-      
-      {/* Additional geometric elements */}
-      <MouseReactive className="absolute top-1/3 left-32 w-12 h-12 hidden xl:block" intensity={5}>
-        <motion.div 
-          className="w-full h-full border border-black/6 rotate-12"
-          animate={{ rotate: [12, 18, 12] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        ></motion.div>
-      </MouseReactive>
-      <MouseReactive className="absolute bottom-1/3 right-32 w-10 h-10 hidden xl:block" intensity={5}>
-        <motion.div 
-          className="w-full h-full border border-black/6 -rotate-12"
-          animate={{ rotate: [-12, -18, -12] }}
-          transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
-        ></motion.div>
-      </MouseReactive>
-      
-      {/* Corner squares */}
-      <div className="absolute top-12 left-12 w-8 h-8 border border-black/8 hidden xl:block"></div>
-      <div className="absolute bottom-12 right-12 w-8 h-8 border border-black/8 hidden xl:block"></div>
-      
-      {/* Diagonal lines */}
-      <div className="absolute top-1/4 right-0 w-32 h-px bg-black/6 rotate-45 origin-right hidden xl:block"></div>
-      <div className="absolute bottom-1/4 left-0 w-32 h-px bg-black/6 -rotate-45 origin-left hidden xl:block"></div>
-      
-      {/* Vertical accent lines */}
-      <div className="absolute left-24 top-1/4 bottom-1/4 w-px bg-gradient-to-b from-transparent via-black/6 to-transparent hidden xl:block"></div>
-      <div className="absolute right-24 top-1/4 bottom-1/4 w-px bg-gradient-to-b from-transparent via-black/6 to-transparent hidden xl:block"></div>
-      
-      <div className="space-y-16 md:space-y-24 relative z-10">
+      <div className="space-y-8">
         {services.map((service, index) => (
           <motion.div
             key={service.title}
@@ -111,30 +64,16 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
-            className="max-w-3xl relative"
+            className="border-4 border-[#1a1a1a] p-12 bg-white"
           >
-            {/* Code-like prefix */}
-            <div className="code-accent mb-2 text-xs tracking-widest">
-              [{String(index + 1).padStart(2, '0')}]
-            </div>
-            
-            {/* Geometric accent line */}
-            <div className="absolute left-0 top-8 bottom-0 w-px bg-gradient-to-b from-black/20 via-black/10 to-transparent hidden md:block"></div>
-            
-            {/* Horizontal accent line on title */}
-            <div className="absolute left-0 top-12 w-16 h-px bg-black/10 hidden md:block"></div>
-            
-            <div className="pl-8 md:pl-12">
-              <AnimatedHeading
-                className="text-3xl md:text-4xl font-medium mb-6 text-[#000000] relative"
-                delay={index * 0.1 + 0.2}
-              >
+            <div className="flex items-start gap-6 mb-6">
+              <span className="text-[64px] font-black text-[#ff6b35] leading-none">{service.number}</span>
+              <h2 className="text-[40px] font-black uppercase tracking-[-2px] mt-2">
                 {service.title}
-              </AnimatedHeading>
-              <span className="absolute -left-12 top-0 w-8 h-px bg-black/20 hidden md:block"></span>
-              <div className="text-[#2D2D2D] leading-relaxed text-lg">
-                {service.content}
-              </div>
+              </h2>
+            </div>
+            <div className="text-base font-medium leading-relaxed pl-[88px]">
+              {service.content}
             </div>
           </motion.div>
         ))}

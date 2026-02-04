@@ -1,14 +1,15 @@
 "use client";
 
-import { useEffect, useState, useRef, useMemo } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 
 const sections = [
-  { id: "hero", name: "Init" },
+  { id: "hero", name: "Overview" },
   { id: "services", name: "Services" },
   { id: "process", name: "How We Work" },
   { id: "thinking", name: "Thinking" },
   { id: "about", name: "About" },
+  { id: "leadership", name: "Leadership" },
   { id: "contact", name: "Contact" },
 ];
 
@@ -18,15 +19,12 @@ export default function NavigationBar() {
   const lastChangeTime = useRef(0);
   const pendingSection = useRef<string | null>(null);
   const debounceTimeout = useRef<NodeJS.Timeout | null>(null);
-  const MIN_CHANGE_INTERVAL = 150; // milliseconds - minimum time between section changes
-
-  // Memoize isOnDarkSection to prevent unnecessary recalculations
-  const isOnDarkSection = useMemo(() => activeSection === "process", [activeSection]);
+  const MIN_CHANGE_INTERVAL = 150;
 
   useEffect(() => {
     let ticking = false;
     let lastActiveSection = "hero";
-    const HYSTERESIS_BUFFER = 200; // pixels - buffer zone to prevent rapid switching
+    const HYSTERESIS_BUFFER = 200;
 
     const handleScroll = () => {
       if (!ticking) {
@@ -36,7 +34,6 @@ export default function NavigationBar() {
           const documentHeight = document.documentElement.scrollHeight;
           const viewportCenter = scrollY + windowHeight / 2;
           
-          // Check if we're near the bottom of the page (within 200px)
           if (scrollY + windowHeight >= documentHeight - 200) {
             const lastSection = sections[sections.length - 1];
             if (lastActiveSection !== lastSection.id) {
@@ -47,7 +44,6 @@ export default function NavigationBar() {
             return;
           }
 
-          // First, check if we're still clearly in the current section (with hysteresis)
           const currentSectionEl = document.getElementById(lastActiveSection);
           let bestSection = lastActiveSection;
           
@@ -56,16 +52,12 @@ export default function NavigationBar() {
             const sectionTop = rect.top + scrollY;
             const sectionBottom = sectionTop + rect.height;
             
-            // Expanded boundaries for current section (hysteresis)
             const expandedTop = sectionTop - HYSTERESIS_BUFFER;
             const expandedBottom = sectionBottom + HYSTERESIS_BUFFER;
             
-            // If viewport center is still within expanded boundaries, stay with current section
             if (viewportCenter >= expandedTop && viewportCenter <= expandedBottom) {
               bestSection = lastActiveSection;
             } else {
-              // We've scrolled past the current section, find the new one
-              // Check sections from bottom to top to find the one we're entering
               for (let i = sections.length - 1; i >= 0; i--) {
                 const section = document.getElementById(sections[i].id);
                 if (section) {
@@ -73,7 +65,6 @@ export default function NavigationBar() {
                   const sectionTop = rect.top + scrollY;
                   const sectionBottom = sectionTop + rect.height;
                   
-                  // Check if viewport center is within this section (with a buffer)
                   if (viewportCenter >= sectionTop - 100 && viewportCenter <= sectionBottom + 100) {
                     bestSection = sections[i].id;
                     break;
@@ -83,7 +74,6 @@ export default function NavigationBar() {
             }
           }
 
-          // Only update if the section actually changed
           if (lastActiveSection !== bestSection) {
             lastActiveSection = bestSection;
             updateSectionSafely(bestSection);
@@ -95,24 +85,20 @@ export default function NavigationBar() {
       }
     };
 
-    // Debounced section update function
     const updateSectionSafely = (newSection: string) => {
       const now = Date.now();
       const timeSinceLastChange = now - lastChangeTime.current;
 
-      // Clear any pending timeout
       if (debounceTimeout.current) {
         clearTimeout(debounceTimeout.current);
         debounceTimeout.current = null;
       }
 
-      // If enough time has passed, update immediately
       if (timeSinceLastChange >= MIN_CHANGE_INTERVAL) {
         lastChangeTime.current = now;
         pendingSection.current = null;
         setActiveSection(newSection);
       } else {
-        // Store the pending section and schedule update
         pendingSection.current = newSection;
         const remainingTime = MIN_CHANGE_INTERVAL - timeSinceLastChange;
         debounceTimeout.current = setTimeout(() => {
@@ -127,7 +113,7 @@ export default function NavigationBar() {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Initial check
+    handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -146,87 +132,44 @@ export default function NavigationBar() {
 
   return (
     <motion.div
-      className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:block"
+      className="fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden lg:block"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 1 }}
     >
-      <div className="relative flex items-center gap-4">
-        {/* Progress line - moved to left */}
-        <div className={`absolute left-0 top-0 bottom-0 w-px transition-colors duration-200 ${
-          activeSection === "process" ? "bg-white/20" : "bg-black/10"
-        }`}></div>
-        
-        {/* Active indicator - moved to left */}
-        <motion.div
-          className={`absolute left-0 w-1 transition-colors duration-200 ${
-            activeSection === "process" ? "bg-white" : "bg-black"
-          }`}
-          style={{
-            height: `${100 / sections.length}%`,
-            top: `${(sections.findIndex(s => s.id === activeSection) / sections.length) * 100}%`,
-          }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        />
-
-        {/* Section dots and labels */}
-        <div className="relative flex flex-col gap-8 py-4 pl-4">
-          {sections.map((section, index) => {
-            const isActive = activeSection === section.id;
-            // When on AISOS section, ALL text should be white. Otherwise, use black.
-            const textColor = isOnDarkSection
-              ? (isActive ? "text-white" : isHovered ? "text-white/60" : "text-white/30")
-              : (isActive ? "text-black" : isHovered ? "text-black/60" : "text-black/30");
-            const borderColor = isOnDarkSection
-              ? (isActive ? "border-white" : "border-white/30")
-              : (isActive ? "border-black" : "border-black/30");
-            const bgColor = isOnDarkSection
-              ? (isActive ? "bg-white" : "bg-transparent")
-              : (isActive ? "bg-black" : "bg-transparent");
-            
-            const finalTextColor = textColor;
-            const finalBorderColor = borderColor;
-            const finalBgColor = bgColor;
-            
-            return (
-              <motion.button
-                key={section.id}
-                onClick={() => scrollToSection(section.id)}
-                className="relative flex items-center gap-3 group"
-                whileHover={{ x: -4 }}
-                transition={{ type: "spring", stiffness: 400 }}
-              >
-                {/* Dot */}
+      <div className="relative flex flex-col gap-4 border-4 border-[#1a1a1a] p-4 bg-white">
+        {sections.map((section) => {
+          const isActive = activeSection === section.id;
+          return (
+            <motion.button
+              key={section.id}
+              onClick={() => scrollToSection(section.id)}
+              className="text-left relative"
+              whileHover={{ x: -4 }}
+              transition={{ type: "spring", stiffness: 400 }}
+            >
+              {isActive && (
                 <motion.div
-                  className={`w-2 h-2 rounded-full border transition-all transition-colors duration-200 ${finalBorderColor} ${finalBgColor}`}
-                  animate={{
-                    scale: isActive ? 1.5 : 1,
-                  }}
-                  transition={{
-                    scale: { duration: 0.2 },
-                  }}
+                  className="absolute left-0 top-0 bottom-0 w-1 bg-[#ff6b35]"
+                  layoutId="activeIndicator"
                 />
-
-                {/* Label */}
-                <motion.div
-                  className={`code-accent text-xs tracking-widest whitespace-nowrap transition-all transition-colors duration-200 ${finalTextColor}`}
-                  animate={{
-                    opacity: isActive || isHovered ? 1 : 0,
-                    x: isActive || isHovered ? 0 : 10,
-                  }}
-                  transition={{
-                    opacity: { duration: 0.2 },
-                    x: { duration: 0.2 },
-                  }}
-                >
-                  {section.name.toUpperCase()}
-                </motion.div>
-              </motion.button>
-            );
-          })}
-        </div>
+              )}
+              <div
+                className={`text-[11px] font-bold uppercase tracking-[2px] transition-colors duration-300 pl-3 ${
+                  isActive
+                    ? "text-[#ff6b35]"
+                    : isHovered
+                    ? "text-[#1a1a1a]"
+                    : "text-[#666666]"
+                }`}
+              >
+                {section.name}
+              </div>
+            </motion.button>
+          );
+        })}
       </div>
     </motion.div>
   );
