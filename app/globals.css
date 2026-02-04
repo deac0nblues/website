@@ -2,21 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
-  --soviet-red: #d32f2f;
-  --soviet-orange: #ff6f00;
-  --cream: #f5e6d3;
-  --black: #1a1a1a;
-  --blue-gray: #455a64;
-  --gold: #ffd700;
+  --warm-white: #faf8f5;
+  --stone-gray-light: #7a8288;
+  --stone-gray-dark: #4a5057;
+  --earth-brown-light: #8b7355;
+  --earth-brown-dark: #6b5d52;
+  --moss-green: #6b7f5c;
+  --clay-orange: #c17a5c;
+  --charcoal: #2d3133;
 }
 
 body {
-  color: var(--black);
-  background-color: var(--cream);
-  font-family: 'Oswald', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--charcoal);
+  background-color: var(--warm-white);
+  font-family: 'Crimson Text', Georgia, serif;
   position: relative;
   min-height: 100vh;
   overflow-x: hidden;
@@ -25,24 +27,22 @@ body {
 main {
   position: relative;
   z-index: 1;
-  background-color: var(--cream);
+  background-color: var(--warm-white);
 }
 
-/* Halftone pattern */
-.halftone-pattern {
-  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='halftone' x='0' y='0' width='10' height='10' patternUnits='userSpaceOnUse'%3E%3Ccircle cx='5' cy='5' r='2' fill='%23000'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='200' height='200' fill='url(%23halftone)'/%3E%3C/svg%3E");
-  opacity: 0.03;
+/* Paper texture */
+.paper-texture {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.3'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  mix-blend-mode: multiply;
   pointer-events: none;
 }
 
-/* Grid overlay */
-.grid-overlay {
-  background-image: 
-    linear-gradient(var(--black) 1px, transparent 1px),
-    linear-gradient(90deg, var(--black) 1px, transparent 1px);
-  background-size: 40px 40px;
-  opacity: 0.1;
-  pointer-events: none;
+/* Horizon line */
+.horizon-line {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--earth-brown-light), transparent);
+  opacity: 0.2;
 }
 
 @layer utilities {
@@ -50,51 +50,42 @@ main {
     text-wrap: balance;
   }
   
-  .soviet-headline {
-    font-family: 'Bebas Neue', 'Impact', sans-serif;
-    font-size: 72px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-    line-height: 0.85;
+  .organic-shape {
+    border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
   }
   
-  .soviet-headline-large {
-    font-family: 'Bebas Neue', 'Impact', sans-serif;
-    font-size: 96px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-    line-height: 0.85;
+  .organic-shape-alt {
+    border-radius: 30% 70% 70% 30% / 30% 60% 40% 70%;
   }
   
-  .soviet-headline-xl {
-    font-family: 'Bebas Neue', 'Impact', sans-serif;
-    font-size: 120px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-    line-height: 0.85;
+  .natural-headline {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 64px;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
   }
   
-  .soviet-number-large {
-    font-family: 'Bebas Neue', 'Impact', sans-serif;
-    font-size: 180px;
-    font-weight: 900;
-    line-height: 1;
-    letter-spacing: -0.05em;
+  .natural-headline-large {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 80px;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
   }
   
-  .soviet-label {
-    font-family: 'Oswald', sans-serif;
+  .natural-body {
+    font-family: 'Crimson Text', Georgia, serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.8;
+  }
+  
+  .natural-label {
+    font-family: 'Inter', system-ui, sans-serif;
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 500;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    letter-spacing: 0.3em;
-  }
-  
-  .diagonal-banner {
-    transform: rotate(12deg);
-    clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
   }
 }

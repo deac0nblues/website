@@ -67,9 +67,12 @@ export default function Thinking() {
 
   return (
     <Section id="thinking">
-      {/* Section label */}
-      <div className="text-2xl font-black uppercase mb-12 text-[#1a1a1a]" style={{ fontFamily: 'Bebas Neue, Impact, sans-serif' }}>
-        WHAT WE'RE THINKING ABOUT
+      {/* Section marker - cairn stones */}
+      <div className="flex items-center gap-3 mb-16">
+        <div className="w-6 h-6 rounded-full bg-[#c17a5c] opacity-60" />
+        <h2 className="text-sm uppercase tracking-[0.2em] text-[#7a8288]" style={{ fontFamily: 'Inter, sans-serif' }}>
+          What We're Thinking About
+        </h2>
       </div>
       
       <motion.div
@@ -97,52 +100,47 @@ export default function Thinking() {
               width: `${articles.length * 33.333}%`,
             }}
           >
-            {articles.map((article, idx) => (
+            {articles.map((article) => (
               <div
                 key={article.id}
                 className="flex-shrink-0 w-full md:w-1/3"
                 style={{ minWidth: "calc(33.333% - 1.5rem)" }}
               >
-                <div className="relative bg-white border-4 border-[#1a1a1a] p-8 h-full shadow-xl">
-                  {/* Number badge */}
-                  <div className="absolute -top-4 -left-4 w-12 h-12 bg-[#d32f2f] text-white flex items-center justify-center font-black text-xl" style={{ fontFamily: 'Bebas Neue, Impact, sans-serif' }}>
-                    {String(idx + 4).padStart(2, '0')}
+                <motion.div 
+                  whileHover={{ y: -4 }}
+                  className="relative bg-white p-8 h-full shadow-sm"
+                  style={{
+                    borderRadius: '40% 60% 50% 50% / 50% 50% 50% 50%',
+                  }}
+                >
+                  <div className="text-xs font-medium text-[#7a8288] mb-4 uppercase tracking-wider" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    {article.type}
                   </div>
-                  
-                  {/* Corner accent */}
-                  <div className="absolute top-0 right-0 w-0 h-0 border-t-[25px] border-t-[#ff6f00] border-l-[25px] border-l-transparent" />
-                  
-                  <div className="text-xs font-bold uppercase tracking-[0.2em] text-[#455a64] mb-4" style={{ fontFamily: 'Oswald, sans-serif' }}>
-                    {article.type.toUpperCase()}
-                  </div>
-                  <h3 className="text-xl md:text-2xl font-black uppercase mb-4 tracking-tight text-[#1a1a1a]" style={{ fontFamily: 'Bebas Neue, Impact, sans-serif' }}>
+                  <h3 className="text-xl md:text-2xl font-normal mb-4 tracking-tight text-[#2d3133]" style={{ fontFamily: 'Inter, sans-serif' }}>
                     {article.title}
                   </h3>
-                  <p className="text-base leading-relaxed text-gray-700 flex-grow" style={{ fontFamily: 'Oswald, sans-serif' }}>
+                  <p className="text-base leading-relaxed text-[#4a5057] flex-grow" style={{ fontFamily: 'Crimson Text, serif' }}>
                     {article.excerpt}
                   </p>
-                </div>
+                </motion.div>
               </div>
             ))}
           </motion.div>
         </div>
 
-        {/* Bold numbered navigation */}
+        {/* Rounded stone navigation */}
         <div className="flex justify-center gap-3 mt-12">
           {articles.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-12 h-12 border-4 border-[#1a1a1a] flex items-center justify-center font-black text-lg transition-all duration-300 ${
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 index === currentIndex
-                  ? "bg-[#d32f2f] text-white"
-                  : "bg-white text-[#1a1a1a] hover:bg-[#ff6f00] hover:text-white"
+                  ? "bg-[#6b7f5c] w-8"
+                  : "bg-[#8b7355] opacity-30 hover:opacity-60"
               }`}
-              style={{ fontFamily: 'Bebas Neue, Impact, sans-serif' }}
               aria-label={`Go to slide ${index + 1}`}
-            >
-              {index + 1}
-            </button>
+            />
           ))}
         </div>
       </motion.div>

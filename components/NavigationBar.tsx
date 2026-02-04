@@ -139,10 +139,7 @@ export default function NavigationBar() {
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 1 }}
     >
-      <div className="relative bg-white border-4 border-[#1a1a1a] p-4 shadow-xl">
-        {/* Corner accent */}
-        <div className="absolute top-0 right-0 w-0 h-0 border-t-[20px] border-t-[#d32f2f] border-l-[20px] border-l-transparent" />
-        
+      <div className="relative bg-white/80 backdrop-blur-sm p-4 rounded-full shadow-sm">
         <div className="flex flex-col gap-3">
           {sections.map((section) => {
             const isActive = activeSection === section.id;
@@ -156,19 +153,19 @@ export default function NavigationBar() {
               >
                 {isActive && (
                   <motion.div
-                    className="absolute left-0 top-0 bottom-0 w-1 bg-[#d32f2f]"
+                    className="absolute left-0 top-0 bottom-0 w-1 bg-[#6b7f5c] rounded-full"
                     layoutId="activeIndicator"
                   />
                 )}
                 <div
-                  className={`text-sm font-bold uppercase tracking-[0.2em] transition-colors duration-300 pl-3 ${
+                  className={`text-sm transition-colors duration-300 pl-3 ${
                     isActive
-                      ? "text-[#d32f2f]"
+                      ? "text-[#6b7f5c]"
                       : isHovered
-                      ? "text-[#1a1a1a]"
-                      : "text-[#455a64]"
+                      ? "text-[#2d3133]"
+                      : "text-[#7a8288]"
                   }`}
-                  style={{ fontFamily: 'Oswald, sans-serif' }}
+                  style={{ fontFamily: 'Inter, sans-serif' }}
                 >
                   {section.name}
                 </div>

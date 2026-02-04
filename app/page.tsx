@@ -11,7 +11,7 @@ import NavigationBar from "@/components/NavigationBar";
 
 export default function Home() {
   return (
-    <main className="min-h-screen relative bg-[#f5e6d3]">
+    <main className="min-h-screen relative bg-[#faf8f5]">
       <NavigationBar />
       
       <section id="hero">

@@ -4,87 +4,76 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen bg-[#f5e6d3] overflow-hidden">
-      {/* Halftone texture overlay */}
-      <div className="absolute inset-0 halftone-pattern" />
+    <section className="relative min-h-screen bg-[#faf8f5] text-[#2d3133] px-6 md:px-12 py-20 relative overflow-hidden">
+      {/* Paper texture */}
+      <div className="absolute inset-0 paper-texture" />
       
-      {/* Diagonal red banner */}
+      {/* Organic background shape */}
       <div 
-        className="absolute top-32 -right-32 w-[800px] h-32 bg-[#d32f2f] transform rotate-12 shadow-2xl z-0"
-        style={{ clipPath: 'polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%)' }}
+        className="absolute top-0 right-0 w-[800px] h-[800px] opacity-5 pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, #8b7355 0%, transparent 70%)',
+          borderRadius: '63% 37% 54% 46% / 55% 48% 52% 45%',
+          transform: 'rotate(15deg)'
+        }}
       />
       
-      {/* Large geometric circle */}
-      <div className="absolute top-1/4 right-20 w-96 h-96 border-[24px] border-[#ff6f00] rounded-full opacity-20 z-0" />
-      
-      {/* Content */}
-      <div className="relative z-10 px-6 md:px-16 py-20 md:py-32 max-w-7xl mx-auto">
-        {/* Top badge */}
-        <div className="flex items-center gap-4 mb-16">
-          <div className="w-16 h-16 rounded-full bg-[#d32f2f] flex items-center justify-center text-white font-black text-2xl" style={{ fontFamily: 'Bebas Neue, Impact, sans-serif' }}>
-            Q
+      <div className="relative z-10 max-w-6xl mx-auto pt-20 md:pt-32">
+        {/* Stone cairn marker */}
+        <div className="mb-24 flex gap-2">
+          <div className="w-2 h-2 rounded-full bg-[#6b7f5c]" />
+          <div className="w-2 h-2 rounded-full bg-[#8b7355]" />
+          <div className="w-2 h-2 rounded-full bg-[#7a8288]" />
+        </div>
+        
+        {/* Hero with circular element */}
+        <div className="grid grid-cols-12 gap-8 items-end mb-16">
+          <div className="col-span-12 md:col-span-8">
+            <h1 className="text-5xl md:text-7xl font-normal leading-[1.1] tracking-tight text-[#2d3133] mb-8" style={{ fontFamily: 'Inter, sans-serif' }}>
+              AI infrastructure<br/>
+              built to create<br/>
+              durable advantage.
+            </h1>
           </div>
-          <div>
-            <div className="text-sm uppercase tracking-[0.3em] font-bold" style={{ fontFamily: 'Oswald, sans-serif' }}>
-              QUICKSILVER LABS
-            </div>
-            <div className="text-xs uppercase tracking-[0.2em] text-[#455a64]" style={{ fontFamily: 'Oswald, sans-serif' }}>
-              Systems Engineering Division
+          
+          {/* Tree ring element */}
+          <div className="col-span-12 md:col-span-4 flex justify-start md:justify-end mt-8 md:mt-0">
+            <div className="relative w-32 h-32 md:w-48 md:h-48">
+              <div className="absolute inset-0 rounded-full border border-[#8b7355] opacity-20" />
+              <div className="absolute inset-4 rounded-full border border-[#8b7355] opacity-30" />
+              <div className="absolute inset-8 rounded-full border border-[#8b7355] opacity-40" />
+              <div className="absolute inset-12 rounded-full border border-[#6b7f5c] opacity-60" />
             </div>
           </div>
         </div>
         
-        {/* Main headline - huge and bold */}
-        <div className="mb-12">
-          <h1 
-            className="text-[80px] md:text-[120px] font-black uppercase leading-[0.85] tracking-tight text-[#1a1a1a]"
-            style={{ fontFamily: 'Bebas Neue, Impact, sans-serif' }}
-          >
-            AI INFRA-<br/>
-            STRUCTURE
-          </h1>
+        {/* Flowing text columns */}
+        <div className="grid grid-cols-12 gap-8">
+          <div className="col-span-12 md:col-span-5">
+            <p className="text-lg leading-relaxed text-[#4a5057]" style={{ fontFamily: 'Crimson Text, serif' }}>
+              Small, senior teams. Strategic thinking. Production systems.
+            </p>
+          </div>
           
-          {/* Red underline accent */}
-          <div className="w-96 h-3 bg-[#d32f2f] mt-6" />
-        </div>
-        
-        {/* Angled info block */}
-        <div 
-          className="relative bg-[#1a1a1a] text-white p-8 max-w-2xl transform -rotate-1 shadow-2xl mb-12"
-        >
-          <div className="absolute top-0 left-0 w-12 h-12 bg-[#ff6f00]" />
-          <p className="text-xl font-bold uppercase tracking-wide leading-relaxed ml-16" style={{ fontFamily: 'Oswald, sans-serif' }}>
-            Built to create durable advantage.<br/>
-            Small, senior teams. Strategic thinking.<br/>
-            Production systems.
-          </p>
-        </div>
-        
-        {/* CTA with geometric treatment */}
-        <div className="flex items-center gap-6">
-          <a
-            href="mailto:ben@quicksilverlab.ai"
-            className="bg-[#d32f2f] text-white px-12 py-5 font-black uppercase text-sm tracking-[0.2em] hover:bg-[#b71c1c] transition-colors shadow-xl"
-            style={{ fontFamily: 'Oswald, sans-serif' }}
-          >
-            GET IN TOUCH
-          </a>
-          
-          {/* Decorative numbers */}
-          <div className="text-[120px] font-black text-[#ff6f00] opacity-20 leading-none" style={{ fontFamily: 'Bebas Neue, Impact, sans-serif' }}>
-            01
+          <div className="col-span-12 md:col-span-5 md:col-start-8">
+            <p className="text-base leading-relaxed text-[#7a8288] mb-8" style={{ fontFamily: 'Crimson Text, serif' }}>
+              We help organizations identify where AI creates competitive advantage 
+              and build the systems that deliver it.
+            </p>
+            
+            <a
+              href="mailto:ben@quicksilverlab.ai"
+              className="inline-block px-8 py-3 bg-[#6b7f5c] text-white rounded-full text-sm hover:bg-[#5a6e4c] transition-colors"
+              style={{ fontFamily: 'Inter, sans-serif' }}
+            >
+              Get in touch
+            </a>
           </div>
         </div>
       </div>
       
-      {/* Bottom grid */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 border-t-4 border-[#1a1a1a]">
-        <div className="grid grid-cols-12 h-full">
-          {[...Array(12)].map((_, i) => (
-            <div key={i} className="border-r border-[#1a1a1a] opacity-20" />
-          ))}
-        </div>
-      </div>
+      {/* Horizon line */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#8b7355] to-transparent opacity-20" />
     </section>
   );
 }

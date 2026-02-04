@@ -6,8 +6,8 @@ import Section from "./Section";
 export default function Services() {
   const services = [
     {
-      number: "01",
       title: "Strategic Systems Design",
+      accentColor: "#6b7f5c",
       content: (
         <>
           <p className="mb-4">
@@ -20,8 +20,8 @@ export default function Services() {
       ),
     },
     {
-      number: "02",
       title: "Production Engineering",
+      accentColor: "#8b7355",
       content: (
         <>
           <p className="mb-4">
@@ -34,8 +34,8 @@ export default function Services() {
       ),
     },
     {
-      number: "03",
       title: "Systems Innovation",
+      accentColor: "#c17a5c",
       content: (
         <>
           <p className="mb-4">
@@ -51,12 +51,15 @@ export default function Services() {
 
   return (
     <Section id="services">
-      {/* Section label */}
-      <div className="text-2xl font-black uppercase mb-12 text-[#1a1a1a]" style={{ fontFamily: 'Bebas Neue, Impact, sans-serif' }}>
-        WHAT WE DO
+      {/* Section marker - cairn stones */}
+      <div className="flex items-center gap-3 mb-16">
+        <div className="w-6 h-6 rounded-full bg-[#8b7355] opacity-60" />
+        <h2 className="text-sm uppercase tracking-[0.2em] text-[#7a8288]" style={{ fontFamily: 'Inter, sans-serif' }}>
+          What We Do
+        </h2>
       </div>
       
-      <div className="space-y-8">
+      <div className="space-y-0">
         {services.map((service, index) => (
           <motion.div
             key={service.title}
@@ -64,41 +67,28 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
-            className="relative"
+            className="relative group mb-12"
           >
-            {/* Large number background */}
-            <div className="absolute -left-8 -top-8 text-[180px] font-black text-[#ff6f00] opacity-10 leading-none" style={{ fontFamily: 'Bebas Neue, Impact, sans-serif' }}>
-              {service.number}
+            {/* Organic accent shape */}
+            <div 
+              className="absolute -left-8 top-0 w-3 h-full opacity-40 transition-opacity group-hover:opacity-60"
+              style={{
+                background: `linear-gradient(180deg, ${service.accentColor} 0%, transparent 100%)`,
+                borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%'
+              }}
+            />
+            
+            <div className="relative pl-12 py-12">
+              <h2 className="text-3xl font-normal mb-4 text-[#2d3133]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                {service.title}
+              </h2>
+              <div className="text-base leading-relaxed text-[#4a5057] max-w-2xl" style={{ fontFamily: 'Crimson Text, serif' }}>
+                {service.content}
+              </div>
             </div>
             
-            <div className="relative bg-white p-10 border-4 border-[#1a1a1a] shadow-xl">
-              {/* Corner accent */}
-              <div className="absolute top-0 right-0 w-0 h-0 border-t-[40px] border-t-[#d32f2f] border-l-[40px] border-l-transparent" />
-              
-              <div className="flex items-start gap-8">
-                {/* Number badge */}
-                <div className="flex-shrink-0 w-20 h-20 bg-[#1a1a1a] text-[#ff6f00] flex items-center justify-center font-black text-3xl" style={{ fontFamily: 'Bebas Neue, Impact, sans-serif' }}>
-                  {service.number}
-                </div>
-                
-                <div>
-                  <h2 className="text-4xl font-black uppercase mb-4 tracking-tight text-[#1a1a1a]" style={{ fontFamily: 'Bebas Neue, Impact, sans-serif' }}>
-                    {service.title}
-                  </h2>
-                  <div className="text-lg leading-relaxed text-gray-700" style={{ fontFamily: 'Oswald, sans-serif' }}>
-                    {service.content}
-                  </div>
-                </div>
-              </div>
-              
-              {/* Diagonal stripe accent */}
-              <div 
-                className="absolute bottom-0 left-0 w-full h-3 bg-[#ff6f00]"
-                style={{
-                  backgroundImage: 'repeating-linear-gradient(45deg, #ff6f00, #ff6f00 10px, #d32f2f 10px, #d32f2f 20px)'
-                }}
-              />
-            </div>
+            {/* Settled sediment line */}
+            <div className="ml-12 h-px bg-gradient-to-r from-[#8b7355] to-transparent opacity-10" />
           </motion.div>
         ))}
       </div>
