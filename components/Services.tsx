@@ -6,7 +6,6 @@ import Section from "./Section";
 export default function Services() {
   const services = [
     {
-      number: "01",
       title: "Strategic Systems Design",
       content: (
         <>
@@ -20,7 +19,6 @@ export default function Services() {
       ),
     },
     {
-      number: "02",
       title: "Production Engineering",
       content: (
         <>
@@ -34,7 +32,6 @@ export default function Services() {
       ),
     },
     {
-      number: "03",
       title: "Systems Innovation",
       content: (
         <>
@@ -52,11 +49,16 @@ export default function Services() {
   return (
     <Section id="services">
       {/* Section label */}
-      <div className="text-[11px] font-bold uppercase tracking-[2px] mb-12">
-        WHAT WE DO
-      </div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="text-lg font-light mb-12 gradient-text-iridescent"
+      >
+        What We Do
+      </motion.div>
       
-      <div className="space-y-8">
+      <div className="space-y-6">
         {services.map((service, index) => (
           <motion.div
             key={service.title}
@@ -64,17 +66,29 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
-            className="border-4 border-[#1a1a1a] p-12 bg-white"
+            whileHover={{ scale: 1.02 }}
+            className="glass-card p-10 group cursor-pointer transition-all duration-500"
           >
-            <div className="flex items-start gap-6 mb-6">
-              <span className="text-[64px] font-black text-[#ff6b35] leading-none">{service.number}</span>
-              <h2 className="text-[40px] font-black uppercase tracking-[-2px] mt-2">
-                {service.title}
-              </h2>
-            </div>
-            <div className="text-base font-medium leading-relaxed pl-[88px]">
+            <h2 
+              className="text-3xl md:text-4xl font-light mb-6 tracking-tight gradient-text"
+            >
+              {service.title}
+            </h2>
+            <div className="text-lg text-white/60 leading-relaxed">
               {service.content}
             </div>
+            
+            {/* Animated gradient border on hover */}
+            <div 
+              className="absolute inset-0 rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+              style={{
+                background: 'linear-gradient(135deg, #8b5cf6, #6366f1, #ec4899)',
+                WebkitMaskImage: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                WebkitMaskComposite: 'xor',
+                maskComposite: 'exclude',
+                padding: '2px',
+              }}
+            />
           </motion.div>
         ))}
       </div>

@@ -139,7 +139,7 @@ export default function NavigationBar() {
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 1 }}
     >
-      <div className="relative flex flex-col gap-4 border-4 border-[#1a1a1a] p-4 bg-white">
+      <div className="glass-card p-4 flex flex-col gap-3">
         {sections.map((section) => {
           const isActive = activeSection === section.id;
           return (
@@ -152,18 +152,25 @@ export default function NavigationBar() {
             >
               {isActive && (
                 <motion.div
-                  className="absolute left-0 top-0 bottom-0 w-1 bg-[#ff6b35]"
+                  className="absolute left-0 top-0 bottom-0 w-1 rounded-full"
                   layoutId="activeIndicator"
+                  style={{
+                    background: 'linear-gradient(135deg, #8b5cf6, #6366f1)',
+                    boxShadow: '0 0 10px rgba(139, 92, 246, 0.6)',
+                  }}
                 />
               )}
               <div
-                className={`text-[11px] font-bold uppercase tracking-[2px] transition-colors duration-300 pl-3 ${
+                className={`text-sm font-light transition-colors duration-300 pl-4 ${
                   isActive
-                    ? "text-[#ff6b35]"
+                    ? "gradient-text-iridescent"
                     : isHovered
-                    ? "text-[#1a1a1a]"
-                    : "text-[#666666]"
+                    ? "text-white/80"
+                    : "text-white/50"
                 }`}
+                style={isActive ? {
+                  textShadow: '0 0 20px rgba(139, 92, 246, 0.4)',
+                } : {}}
               >
                 {section.name}
               </div>

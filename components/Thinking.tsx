@@ -68,9 +68,14 @@ export default function Thinking() {
   return (
     <Section id="thinking">
       {/* Section label */}
-      <div className="text-[11px] font-bold uppercase tracking-[2px] mb-12">
-        WHAT WE'RE THINKING ABOUT
-      </div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="text-lg font-light mb-12 gradient-text-iridescent"
+      >
+        What We're Thinking About
+      </motion.div>
       
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -103,33 +108,39 @@ export default function Thinking() {
                 className="flex-shrink-0 w-full md:w-1/3"
                 style={{ minWidth: "calc(33.333% - 1.5rem)" }}
               >
-                <div className="border-4 border-[#1a1a1a] p-8 bg-white h-full flex flex-col">
-                  <div className="text-[11px] font-bold uppercase tracking-[2px] text-[#666666] mb-4">
-                    {article.type.toUpperCase()}
+                <motion.div 
+                  whileHover={{ scale: 1.02 }}
+                  className="glass-card p-8 h-full flex flex-col group cursor-pointer transition-all duration-500"
+                >
+                  <div className="text-sm font-light text-white/50 mb-4 uppercase tracking-wider">
+                    {article.type}
                   </div>
-                  <h3 className="text-[24px] font-bold uppercase tracking-[-1px] mb-4">
+                  <h3 className="text-xl md:text-2xl font-light mb-4 tracking-tight gradient-text">
                     {article.title}
                   </h3>
-                  <p className="text-[16px] font-medium leading-relaxed flex-grow">
+                  <p className="text-base text-white/60 leading-relaxed flex-grow">
                     {article.excerpt}
                   </p>
-                </div>
+                </motion.div>
               </div>
             ))}
           </motion.div>
         </div>
 
-        {/* Square navigation dots */}
-        <div className="flex justify-center gap-2 mt-12">
+        {/* Rounded navigation dots with glow */}
+        <div className="flex justify-center gap-3 mt-12">
           {articles.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`h-2 transition-all duration-300 ${
+              className={`h-3 w-3 rounded-full transition-all duration-300 ${
                 index === currentIndex
-                  ? "bg-[#ff6b35] w-8"
-                  : "bg-[#e0e0e0] w-2 hover:bg-[#999999]"
+                  ? "bg-gradient-to-r from-[#8b5cf6] to-[#6366f1] scale-125"
+                  : "bg-white/20 hover:bg-white/40"
               }`}
+              style={index === currentIndex ? {
+                boxShadow: '0 0 20px rgba(139, 92, 246, 0.6)',
+              } : {}}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
