@@ -81,15 +81,11 @@ export default function Hero() {
         >
           <a
             href="mailto:build@quicksilverlab.ai"
-            className="inline-block px-8 py-3 border-2 border-[#00ff96] bg-[#00ff96] text-[#0a0e27] hover:bg-transparent hover:text-[#00ff96] transition-all duration-200 font-medium font-mono uppercase tracking-wider text-sm"
+            className="inline-block px-6 sm:px-8 py-3 border-2 border-[#00ff96] bg-[#00ff96] text-[#0a0e27] hover:bg-transparent hover:text-[#00ff96] transition-all duration-200 font-medium font-mono uppercase tracking-wider text-sm"
           >
-            <a
-              href="mailto:ben@quicksilverlab.ai"
-              className="inline-block px-6 sm:px-8 py-3 border-2 border-[#00ff96] bg-[#00ff96] text-[#0a0e27] hover:bg-transparent hover:text-[#00ff96] transition-all duration-200 font-medium font-mono uppercase tracking-wider text-sm"
-            >
-              Get in touch
-            </a>
-          </motion.div>
+            Get in touch
+          </a>
+        </motion.div>
         </div>
       </div>
       
