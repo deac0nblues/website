@@ -11,59 +11,35 @@ export default function Services() {
       content: (
         <>
           <p className="mb-4 body-text">
-            We help organizations determine where AI belongs in their business - and what must change to make it work.
+            We help organizations reinvent as AI-native. That means more than adding models, it means rethinking data flows, incentives, workflows, and governance
           </p>
           <p className="body-text">
-            This isn't model selection or vendor evaluation. It's strategic systems thinking: understanding how AI reshapes workflows, incentives, data ownership, and competitive position. We work with leadership teams to map the territory, identify leverage points, and define what success actually requires.
+            In a market flooded with hype, relying on ad-hoc efforts is a critical mistake. As <a href="https://www.mckinsey.com.br/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#00ff96] transition-colors">recent reports suggest</a>, companies with centralized AI organizations are significantly more likely to generate value than those without structure. We bring the discipline of PhD-level researchers and the pragmatism of industry veterans to build that structure for you. We ensure your strategy is founded on solid ground, turning potential into durable competitive advantage.
           </p>
         </>
       ),
-      annotation: "Strategic systems thinking: understanding how AI reshapes workflows, incentives, data ownership, and competitive position.",
-      codeSnippet: `function assessAILeverage(business) {
-  const leveragePoints = mapTerritory(business);
-  const risks = identifyRisks(leveragePoints);
-  return validateSolvable(risks);
+      annotation: "PhD-level researchers and industry veterans building centralized AI structure.",
+      codeSnippet: `function reinventAsAI(org) {
+  const structure = centralize();
+  const risks = mapRisks();
+  return buildFoundation(structure);
 }`
     },
     {
       id: "002",
-      title: "Production Engineering",
-      content: (
-        <>
-          <p className="mb-4 body-text">
-            We field small, senior teams to design, build, and deploy AI systems on aggressive timelines.
-          </p>
-          <p className="body-text">
-            We take end-to-end responsibility: architecture, implementation, deployment, and ownership transfer. Our engagements are time-boxed, production-focused, and designed to leave your team with systems they can operate and evolve.
-          </p>
-        </>
-      ),
-      annotation: "End-to-end responsibility: architecture, implementation, deployment, and ownership transfer.",
-      codeSnippet: `const system = {
-  architecture: design(),
-  implementation: build(),
-  deployment: deploy(),
-  ownership: transfer()
-};`
-    },
-    {
-      id: "003",
       title: "Systems Innovation",
       content: (
         <>
-          <p className="mb-4 body-text">
-            We develop new approaches, frameworks, and tooling that advance the craft of AI systems engineering.
-          </p>
           <p className="body-text">
-            This work is results-driven, not academic. Unlike consulting firms that bill clients to reinvent the wheel on every project, we build reusable systems that compound over time. Our innovation work makes us faster and more reliable - which means better outcomes for clients and less inefficiency overall.
+            We bring new approaches, frameworks, and tooling that advance the craft of AI systems engineering. We build software that transforms existing workflows and wont be left behind as AI technology evolves. If you want a simple wrapper around an LLM, hire a bodyshop, if you want to take a step into the AI future, call us.
           </p>
         </>
       ),
-      annotation: "Reusable systems that compound over time — not reinventing the wheel on every project.",
-      codeSnippet: `class ReusableSystem {
+      annotation: "Building software that transforms workflows and evolves with AI technology.",
+      codeSnippet: `class AIFuture {
   constructor() {
-    this.compounds = true;
-    this.reliability = increase();
+    this.evolves = true;
+    this.transforms = workflows();
   }
 }`
     },
@@ -81,7 +57,7 @@ export default function Services() {
         <div className="code-accent mb-4 text-[11px]">[SERVICES]</div>
         <h2 className="headline-medium mb-4">What We Do</h2>
         <div className="font-mono text-[10px] text-[#a0a0a0] uppercase tracking-wider">
-          THREE CORE CAPABILITIES /// PRODUCTION-FOCUSED
+          TWO CORE CAPABILITIES /// PRODUCTION-FOCUSED
         </div>
       </motion.div>
       

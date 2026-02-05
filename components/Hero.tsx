@@ -47,7 +47,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-lg md:text-xl text-[#a0a0a0] mb-12 max-w-2xl"
         >
-          Small, senior teams. Strategic thinking. Production systems.
+          VC and Fortune 500 veterans. Production-grade AI systems. Leading Edge AI Infrastructure.
         </motion.p>
         
         {/* Data metrics */}
@@ -79,7 +79,7 @@ export default function Hero() {
           className="mt-12"
         >
           <a
-            href="mailto:ben@quicksilverlab.ai"
+            href="mailto:build@quicksilverlab.ai"
             className="inline-block px-8 py-3 border-2 border-[#00ff96] bg-[#00ff96] text-[#0a0e27] hover:bg-transparent hover:text-[#00ff96] transition-all duration-200 font-medium font-mono uppercase tracking-wider text-sm"
           >
             Get in touch
