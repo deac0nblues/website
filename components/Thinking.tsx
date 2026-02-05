@@ -92,6 +92,25 @@ const articles: Article[] = [
 export default function Thinking() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [visibleCards, setVisibleCards] = useState(1);
+
+  // Detect window size to determine visible cards
+  useEffect(() => {
+    const updateVisibleCards = () => {
+      const width = window.innerWidth;
+      if (width >= 1024) {
+        setVisibleCards(3); // Desktop: 3 cards
+      } else if (width >= 768) {
+        setVisibleCards(2); // Tablet: 2 cards
+      } else {
+        setVisibleCards(1); // Mobile: 1 card
+      }
+    };
+
+    updateVisibleCards();
+    window.addEventListener('resize', updateVisibleCards);
+    return () => window.removeEventListener('resize', updateVisibleCards);
+  }, []);
 
   // Auto-rotate every 5 seconds
   useEffect(() => {
@@ -104,20 +123,8 @@ export default function Thinking() {
     return () => clearInterval(interval);
   }, [isAutoPlaying]);
 
-  // Get the three articles to display
-  const getDisplayedArticles = () => {
-    const displayed: Article[] = [];
-    for (let i = 0; i < 3; i++) {
-      const index = (currentIndex + i) % articles.length;
-      displayed.push(articles[index]);
-    }
-    return displayed;
-  };
-
-  const displayedArticles = getDisplayedArticles();
-
   return (
-    <Section id="thinking">
+    <Section id="thinking" className="hidden lg:block">
       {/* Section header with metadata */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -147,9 +154,9 @@ export default function Thinking() {
         {/* Carousel container */}
         <div className="relative overflow-hidden">
           <motion.div
-            className="flex gap-6 md:gap-8"
+            className="flex gap-4 sm:gap-6 md:gap-8"
             animate={{
-              x: `-${currentIndex * 33.333}%`,
+              x: `-${currentIndex * (100 / visibleCards)}%`,
             }}
             transition={{
               type: "tween",
@@ -157,14 +164,17 @@ export default function Thinking() {
               ease: "easeInOut",
             }}
             style={{
-              width: `${articles.length * 33.333}%`,
+              width: `${articles.length * (100 / visibleCards)}%`,
             }}
           >
             {articles.map((article) => (
               <div
                 key={article.id}
-                className="flex-shrink-0 w-full md:w-1/3"
-                style={{ minWidth: "calc(33.333% - 1rem)" }}
+                className="flex-shrink-0"
+                style={{
+                  width: `calc(${100 / visibleCards}% - ${visibleCards === 1 ? '0' : visibleCards === 2 ? '0.75rem' : '1rem'})`,
+                  minWidth: `calc(${100 / visibleCards}% - ${visibleCards === 1 ? '0' : visibleCards === 2 ? '0.75rem' : '1rem'})`,
+                }}
               >
                 <a href={article.link || "#"} className="block h-full">
                   <div className="border border-[#00ff96]/30 p-6 md:p-8 bg-[#0a0e27] hover:border-[#00ff96] transition-all duration-200 h-full flex flex-col cursor-pointer">
@@ -207,15 +217,15 @@ export default function Thinking() {
         </div>
 
         {/* Navigation dots */}
-        <div className="flex justify-center gap-2 mt-12">
+        <div className="flex justify-center gap-2 mt-8 sm:mt-12">
           {articles.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`h-2 rounded-full transition-all duration-200 ${
+              className={`rounded-full transition-all duration-200 touch-manipulation ${
                 index === currentIndex
-                  ? "bg-[#00ff96] w-8"
-                  : "bg-[#00ff96]/20 hover:bg-[#00ff96]/40 w-2"
+                  ? "bg-[#00ff96] w-12 sm:w-16 h-1.5"
+                  : "bg-[#00ff96]/20 hover:bg-[#00ff96]/40 active:bg-[#00ff96]/60 w-1.5 h-1.5"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />
