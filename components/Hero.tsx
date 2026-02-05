@@ -34,7 +34,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-[48px] md:text-[64px] lg:text-[84px] font-black leading-[0.95] tracking-[-3px] mb-8"
+          className="text-[48px] md:text-[64px] lg:text-[84px] font-light leading-[0.95] tracking-[-3px] mb-8"
         >
           <span className="block">AI infrastructure</span>
           <span className="block">built to create</span>
@@ -58,15 +58,15 @@ export default function Hero() {
           className="flex flex-wrap gap-8 md:gap-12 mt-16"
         >
           <div>
-            <div className="text-[48px] md:text-[64px] font-bold text-[#00ff96]">&lt;30</div>
+            <div className="text-[48px] md:text-[64px] font-light text-[#00ff96]">&lt;30</div>
             <div className="text-[10px] text-[#a0a0a0] uppercase tracking-wider mt-2 font-mono">Day Strategy Sprints</div>
           </div>
           <div>
-            <div className="text-[48px] md:text-[64px] font-bold text-[#00ff96]">100%</div>
+            <div className="text-[48px] md:text-[64px] font-light text-[#00ff96]">100%</div>
             <div className="text-[10px] text-[#a0a0a0] uppercase tracking-wider mt-2 font-mono">Senior Engineers</div>
           </div>
           <div>
-            <div className="text-[48px] md:text-[64px] font-bold text-[#00ff96]">0</div>
+            <div className="text-[48px] md:text-[64px] font-light text-[#00ff96]">0</div>
             <div className="text-[10px] text-[#a0a0a0] uppercase tracking-wider mt-2 font-mono">Perpetual Contracts</div>
           </div>
         </motion.div>
@@ -87,20 +87,59 @@ export default function Hero() {
         </motion.div>
       </div>
       
-      {/* Side annotations */}
+      {/* Featured article callout */}
       <motion.div
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 1 }}
-        className="absolute right-6 md:right-16 top-64 w-64 md:w-80 font-mono text-[11px] leading-relaxed text-[#a0a0a0] border-l-2 border-[#00ff96] pl-6 hidden lg:block"
+        className="absolute right-32 md:right-48 xl:right-64 top-64 w-80 md:w-96 hidden lg:block z-20"
       >
-        [001] Strategic systems design<br/>
-        [002] Production engineering<br/>
-        [003] Systems innovation<br/>
-        <br/>
-        We build reusable infrastructure<br/>
-        that compounds over time —<br/>
-        not PowerPoint decks.
+        <div className="border border-[#00ff96]/30 p-6 bg-[#0a0e27] hover:border-[#00ff96] transition-all duration-200 relative z-20">
+          {/* Metadata header */}
+          <div className="flex justify-between items-start mb-4">
+            <div className="font-mono text-[10px] text-[#00ff96] uppercase tracking-wider">
+              POSITION PAPER
+            </div>
+            <div className="font-mono text-[10px] text-[#a0a0a0] uppercase tracking-wider">
+              2024.12
+            </div>
+          </div>
+          
+          {/* Category tag */}
+          <div className="mb-4">
+            <span className="inline-block font-mono text-[9px] text-[#00ff96] border border-[#00ff96]/30 px-2 py-1 uppercase tracking-wider">
+              SYSTEMS
+            </span>
+          </div>
+          
+          {/* Title */}
+          <h3 className="text-lg md:text-xl font-light mb-4 text-white leading-tight">
+            Position Paper: AI Infrastructure Patterns
+          </h3>
+          
+          {/* Excerpt */}
+          <p className="text-[#a0a0a0] leading-relaxed text-sm body-text mb-6">
+            Exploring reusable patterns for building production AI systems that scale reliably under real-world constraints.
+          </p>
+          
+          {/* Button to jump to thinking section */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              const element = document.getElementById('thinking');
+              if (element) {
+                const yOffset = -20;
+                const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+              }
+            }}
+            className="w-full font-mono text-[10px] text-[#00ff96] uppercase tracking-wider border border-[#00ff96]/30 px-4 py-2 hover:bg-[#00ff96] hover:text-[#0a0e27] transition-all duration-200 text-left cursor-pointer relative z-10"
+          >
+            How we think about AI
+          </button>
+        </div>
       </motion.div>
       
       {/* Code snippet decoration - bottom left */}

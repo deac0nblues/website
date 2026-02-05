@@ -93,12 +93,12 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
-            className="relative grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12"
+            className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12"
           >
             {/* Left column - Numbered reference and title */}
             <div className="lg:col-span-1">
               <div className="code-accent mb-4 text-[11px]">[{service.id}]</div>
-              <h3 className="text-3xl md:text-4xl font-bold mb-6 leading-tight tracking-tight">
+              <h3 className="text-3xl md:text-4xl font-light mb-6 leading-tight tracking-tight">
                 {service.title}
               </h3>
               {/* Side annotation */}
@@ -111,13 +111,6 @@ export default function Services() {
             <div className="lg:col-span-1">
               <div className="text-white leading-relaxed">
                 {service.content}
-              </div>
-            </div>
-            
-            {/* Right column - Code snippet */}
-            <div className="lg:col-span-1">
-              <div className="font-mono text-[10px] text-[#00ff96] opacity-50 leading-relaxed bg-[#0a0e27] border border-[#00ff96]/20 p-4 hidden lg:block">
-                <pre className="whitespace-pre-wrap">{service.codeSnippet}</pre>
               </div>
             </div>
             

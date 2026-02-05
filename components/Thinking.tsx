@@ -157,7 +157,7 @@ export default function Thinking() {
                   </div>
                   
                   {/* Title */}
-                  <h3 className="text-xl md:text-2xl font-bold mb-4 text-white leading-tight">
+                  <h3 className="text-xl md:text-2xl font-light mb-4 text-white leading-tight">
                     {article.title}
                   </h3>
                   

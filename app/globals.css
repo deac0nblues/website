@@ -52,14 +52,14 @@ main {
   
   .headline-large {
     font-size: 84px;
-    font-weight: 900;
+    font-weight: 300;
     letter-spacing: -3px;
     line-height: 0.95;
   }
   
   .headline-medium {
     font-size: 64px;
-    font-weight: 800;
+    font-weight: 300;
     letter-spacing: -2px;
     line-height: 0.95;
   }

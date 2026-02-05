@@ -35,7 +35,7 @@ export default function About() {
           <p className="text-white leading-relaxed">
             We believe AI creates durable advantage when treated as infrastructure, not novelty. We focus on systems that must function under real constraints: imperfect data, regulatory pressure, operational complexity, and long-term ownership.
           </p>
-          <p className="text-white font-bold text-xl leading-relaxed border-l-4 border-[#00ff96] pl-6">
+          <p className="text-white font-medium text-xl leading-relaxed border-l-4 border-[#00ff96] pl-6">
             Quicksilver Labs exists to close the gap between knowing where AI should go and taking responsibility for building what it takes to get there.
           </p>
         </div>

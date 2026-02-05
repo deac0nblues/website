@@ -31,7 +31,7 @@ export default function Leadership() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 relative">
           <div className="lg:col-span-2">
             <div className="code-accent mb-4 text-[11px]">[CEO]</div>
-            <h3 className="text-3xl md:text-4xl font-bold mb-6 leading-tight tracking-tight">
+            <h3 className="text-3xl md:text-4xl font-light mb-6 leading-tight tracking-tight">
               Dan Watkins — CEO
             </h3>
             <div className="body-text space-y-6 text-white">
@@ -73,7 +73,7 @@ export default function Leadership() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 relative pt-12 border-t border-[#00ff96]/20">
           <div className="lg:col-span-2">
             <div className="code-accent mb-4 text-[11px]">[CTO & FOUNDER]</div>
-            <h3 className="text-3xl md:text-4xl font-bold mb-6 leading-tight tracking-tight">
+            <h3 className="text-3xl md:text-4xl font-light mb-6 leading-tight tracking-tight">
               Ben Letson — CTO & Founder
             </h3>
             <div className="body-text space-y-6 text-white">
@@ -110,13 +110,6 @@ export default function Leadership() {
             </div>
           </div>
           
-          {/* Code snippet decoration */}
-          <div className="absolute bottom-0 right-0 font-mono text-[10px] text-[#00ff96] opacity-30 hidden xl:block">
-            <pre className="whitespace-pre">{`function buildInfrastructure() {
-  const understanding = analyzeFailures();
-  return createSystems(understanding);
-}`}</pre>
-          </div>
         </div>
       </motion.div>
     </Section>
