@@ -10,7 +10,7 @@ interface SectionProps {
 export default function Section({ children, className = "", variant = "default", id }: SectionProps) {
   // All sections use dark navy background
   return (
-    <section id={id} className={`py-24 px-6 md:px-16 relative bg-[#0a0e27] text-white ${className}`}>
+    <section id={id} className={`py-16 px-4 sm:py-20 sm:px-6 md:py-24 md:px-12 lg:px-16 relative bg-[#0a0e27] text-white ${className}`}>
       {/* Grid overlay */}
       <div 
         className="absolute inset-0 opacity-30 pointer-events-none"

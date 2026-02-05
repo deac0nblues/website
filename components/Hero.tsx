@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen bg-[#0a0e27] text-white px-6 md:px-16 py-20 overflow-hidden">
+    <section className="relative min-h-screen bg-[#0a0e27] text-white px-4 sm:px-6 md:px-16 py-20 overflow-hidden">
       {/* Grid overlay */}
       <div 
         className="absolute inset-0 opacity-30 pointer-events-none"
@@ -29,17 +29,18 @@ export default function Hero() {
       </motion.div>
       
       {/* Main hero content */}
-      <div className="relative z-10 max-w-5xl">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-[48px] md:text-[64px] lg:text-[84px] font-light leading-[0.95] tracking-[-3px] mb-8"
-        >
-          <span className="block">AI infrastructure</span>
-          <span className="block">built to create</span>
-          <span className="block">durable advantage.</span>
-        </motion.h1>
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="max-w-5xl">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-[36px] sm:text-[48px] md:text-[64px] lg:text-[84px] font-light leading-[0.95] tracking-[-3px] mb-8"
+          >
+            <span className="block">AI infrastructure</span>
+            <span className="block">built to create</span>
+            <span className="block">durable advantage.</span>
+          </motion.h1>
         
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -50,41 +51,42 @@ export default function Hero() {
           Small, senior teams. Strategic thinking. Production systems.
         </motion.p>
         
-        {/* Data metrics */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-wrap gap-8 md:gap-12 mt-16"
-        >
-          <div>
-            <div className="text-[48px] md:text-[64px] font-light text-[#00ff96]">&lt;30</div>
-            <div className="text-[10px] text-[#a0a0a0] uppercase tracking-wider mt-2 font-mono">Day Strategy Sprints</div>
-          </div>
-          <div>
-            <div className="text-[48px] md:text-[64px] font-light text-[#00ff96]">100%</div>
-            <div className="text-[10px] text-[#a0a0a0] uppercase tracking-wider mt-2 font-mono">Senior Engineers</div>
-          </div>
-          <div>
-            <div className="text-[48px] md:text-[64px] font-light text-[#00ff96]">0</div>
-            <div className="text-[10px] text-[#a0a0a0] uppercase tracking-wider mt-2 font-mono">Perpetual Contracts</div>
-          </div>
-        </motion.div>
-        
-        {/* CTA Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-12"
-        >
-          <a
-            href="mailto:ben@quicksilverlab.ai"
-            className="inline-block px-8 py-3 border-2 border-[#00ff96] bg-[#00ff96] text-[#0a0e27] hover:bg-transparent hover:text-[#00ff96] transition-all duration-200 font-medium font-mono uppercase tracking-wider text-sm"
+          {/* Data metrics */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex flex-wrap gap-6 sm:gap-8 md:gap-12 mt-12 sm:mt-16"
           >
-            Get in touch
-          </a>
-        </motion.div>
+            <div>
+              <div className="text-[36px] sm:text-[48px] md:text-[64px] font-light text-[#00ff96]">&lt;30</div>
+              <div className="text-[10px] text-[#a0a0a0] uppercase tracking-wider mt-2 font-mono">Day Strategy Sprints</div>
+            </div>
+            <div>
+              <div className="text-[36px] sm:text-[48px] md:text-[64px] font-light text-[#00ff96]">100%</div>
+              <div className="text-[10px] text-[#a0a0a0] uppercase tracking-wider mt-2 font-mono">Senior Engineers</div>
+            </div>
+            <div>
+              <div className="text-[36px] sm:text-[48px] md:text-[64px] font-light text-[#00ff96]">0</div>
+              <div className="text-[10px] text-[#a0a0a0] uppercase tracking-wider mt-2 font-mono">Perpetual Contracts</div>
+            </div>
+          </motion.div>
+          
+          {/* CTA Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="mt-8 sm:mt-12"
+          >
+            <a
+              href="mailto:ben@quicksilverlab.ai"
+              className="inline-block px-6 sm:px-8 py-3 border-2 border-[#00ff96] bg-[#00ff96] text-[#0a0e27] hover:bg-transparent hover:text-[#00ff96] transition-all duration-200 font-medium font-mono uppercase tracking-wider text-sm"
+            >
+              Get in touch
+            </a>
+          </motion.div>
+        </div>
       </div>
       
       {/* Featured article callout */}
@@ -92,7 +94,10 @@ export default function Hero() {
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 1 }}
-        className="absolute right-32 md:right-48 xl:right-64 top-64 w-80 md:w-96 hidden lg:block z-20"
+        className="absolute right-40 xl:right-48 2xl:right-64 top-64 w-80 xl:w-96 hidden xl:block z-20"
+        style={{ 
+          maxWidth: 'calc(100% - 200px)' 
+        }}
       >
         <div className="border border-[#00ff96]/30 p-6 bg-[#0a0e27] hover:border-[#00ff96] transition-all duration-200 relative z-20">
           {/* Metadata header */}
@@ -147,7 +152,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.3 }}
         transition={{ duration: 1, delay: 1.2 }}
-        className="absolute bottom-16 left-6 md:left-16 font-mono text-[10px] text-[#00ff96] hidden xl:block"
+        className="absolute bottom-12 sm:bottom-16 left-4 sm:left-6 md:left-16 font-mono text-[10px] text-[#00ff96] hidden xl:block"
       >
         <div className="opacity-50">if (system.fails) {'{'}</div>
         <div className="pl-4 opacity-30">return engineering;</div>

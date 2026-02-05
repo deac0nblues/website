@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="py-12 px-6 md:px-16 border-t-2 border-[#00ff96]/30 bg-[#0a0e27] relative">
+    <footer className="py-12 px-4 sm:px-6 md:px-16 border-t-2 border-[#00ff96]/30 bg-[#0a0e27] relative">
       {/* Grid overlay */}
       <div 
         className="absolute inset-0 opacity-30 pointer-events-none"

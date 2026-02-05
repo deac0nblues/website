@@ -25,17 +25,17 @@ export default function About() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
-        className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12"
+        className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12"
       >
         {/* Main content */}
-        <div className="lg:col-span-2 space-y-8 body-text">
+        <div className="lg:col-span-2 space-y-6 sm:space-y-8 body-text">
           <p className="text-white leading-relaxed">
             Quicksilver Labs is an engineering-led AI firm built by people who have spent years designing, delivering, and operating complex technical systems in production. We come from applied mathematics, engineering, and large-scale technical delivery backgrounds.
           </p>
           <p className="text-white leading-relaxed">
             We believe AI creates durable advantage when treated as infrastructure, not novelty. We focus on systems that must function under real constraints: imperfect data, regulatory pressure, operational complexity, and long-term ownership.
           </p>
-          <p className="text-white font-medium text-xl leading-relaxed border-l-4 border-[#00ff96] pl-6">
+          <p className="text-white font-medium text-lg sm:text-xl leading-relaxed border-l-4 border-[#00ff96] pl-4 sm:pl-6">
             Quicksilver Labs exists to close the gap between knowing where AI should go and taking responsibility for building what it takes to get there.
           </p>
         </div>
@@ -63,15 +63,6 @@ export default function About() {
               <div>Real-world constraints</div>
             </div>
           </div>
-        </div>
-        
-        {/* Code snippet decoration */}
-        <div className="absolute bottom-0 left-0 font-mono text-[10px] text-[#00ff96] opacity-30 hidden xl:block">
-          <pre className="whitespace-pre">{`const quicksilver = {
-  approach: 'infrastructure',
-  focus: 'production systems',
-  constraint: 'real-world'
-};`}</pre>
         </div>
       </motion.div>
     </Section>
