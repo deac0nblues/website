@@ -94,10 +94,6 @@ export default function Arsenal() {
             ))}
           </motion.div>
         </div>
-
-        <p className="text-center text-[10px] text-[#a0a0a0] mt-6 font-mono uppercase tracking-wider">
-          [CONTINUOUS_DEPLOYMENT]
-        </p>
       </motion.div>
     </Section>
   );

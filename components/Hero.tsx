@@ -25,7 +25,7 @@ export default function Hero() {
         className="relative z-10 flex flex-col md:flex-row justify-between mb-16 md:mb-32 font-mono text-[11px] text-[#00ff96] uppercase tracking-[2px]"
       >
         <div>QUICKSILVER LABS /// SYSTEMS ENGINEERING</div>
-        <div className="mt-2 md:mt-0">EST. 2024 /// BOS + HOU</div>
+        <div className="mt-2 md:mt-0">EST. 2025 /// Houston + Boston</div>
       </motion.div>
       
       {/* Main hero content */}

@@ -24,7 +24,7 @@ export default function Footer() {
             </a>
           </div>
           <div className="font-mono text-[10px] text-[#a0a0a0] uppercase tracking-wider">
-            Based in Boston and Houston, working globally
+            Based in Houston and Boston, working globally
           </div>
         </div>
       </div>
