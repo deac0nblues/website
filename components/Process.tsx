@@ -41,7 +41,7 @@ export default function Process() {
               </h3>
               <div className="body-text space-y-4 mb-6">
                 <p>
-                  Fast-turn strategic work with leadership teams, typically completed in under a month. We assess where AI creates leverage in your business, map technical and organizational risks, validate that they're solvable, and deliver a concrete plan with clear ownership and next steps.
+                  Fast-turn strategic work with leadership teams, typically completed weeks. We assess where AI creates leverage in your business, map technical and organizational risks, validate that they're solvable, and deliver a concrete plan with clear ownership and next steps.
                 </p>
                 <p>
                   No six-month discovery phases. No PowerPoints left to gather dust. You get decisive direction from people who've built these systems before.

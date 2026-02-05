@@ -48,36 +48,40 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-lg md:text-xl text-[#a0a0a0] mb-12 max-w-2xl"
         >
-          Small, senior teams. Strategic thinking. Production systems.
+          VC and Fortune 500 veterans. Production-grade AI systems. Leading Edge AI Infrastructure.
         </motion.p>
         
-          {/* Data metrics */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-wrap gap-6 sm:gap-8 md:gap-12 mt-12 sm:mt-16"
-          >
-            <div>
-              <div className="text-[36px] sm:text-[48px] md:text-[64px] font-light text-[#00ff96]">&lt;30</div>
-              <div className="text-[10px] text-[#a0a0a0] uppercase tracking-wider mt-2 font-mono">Day Strategy Sprints</div>
-            </div>
-            <div>
-              <div className="text-[36px] sm:text-[48px] md:text-[64px] font-light text-[#00ff96]">100%</div>
-              <div className="text-[10px] text-[#a0a0a0] uppercase tracking-wider mt-2 font-mono">Senior Engineers</div>
-            </div>
-            <div>
-              <div className="text-[36px] sm:text-[48px] md:text-[64px] font-light text-[#00ff96]">0</div>
-              <div className="text-[10px] text-[#a0a0a0] uppercase tracking-wider mt-2 font-mono">Perpetual Contracts</div>
-            </div>
-          </motion.div>
-          
-          {/* CTA Button */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="mt-8 sm:mt-12"
+        {/* Data metrics */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="flex flex-wrap gap-8 md:gap-12 mt-16"
+        >
+          <div>
+            <div className="text-[48px] md:text-[64px] font-bold text-[#00ff96]">&lt;30</div>
+            <div className="text-[10px] text-[#a0a0a0] uppercase tracking-wider mt-2 font-mono">Day Strategy Sprints</div>
+          </div>
+          <div>
+            <div className="text-[48px] md:text-[64px] font-bold text-[#00ff96]">100%</div>
+            <div className="text-[10px] text-[#a0a0a0] uppercase tracking-wider mt-2 font-mono">Senior Engineers</div>
+          </div>
+          <div>
+            <div className="text-[48px] md:text-[64px] font-bold text-[#00ff96]">0</div>
+            <div className="text-[10px] text-[#a0a0a0] uppercase tracking-wider mt-2 font-mono">Perpetual Contracts</div>
+          </div>
+        </motion.div>
+        
+        {/* CTA Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="mt-12"
+        >
+          <a
+            href="mailto:build@quicksilverlab.ai"
+            className="inline-block px-8 py-3 border-2 border-[#00ff96] bg-[#00ff96] text-[#0a0e27] hover:bg-transparent hover:text-[#00ff96] transition-all duration-200 font-medium font-mono uppercase tracking-wider text-sm"
           >
             <a
               href="mailto:ben@quicksilverlab.ai"

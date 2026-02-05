@@ -17,14 +17,11 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div className="flex flex-col items-start">
             <a 
-              href="mailto:ben@quicksilverlab.ai" 
+              href="mailto:build@quicksilverlab.ai" 
               className="text-[#00ff96] hover:text-[#00ff96]/80 transition-all font-mono text-sm uppercase tracking-wider mb-2"
             >
               Contact
             </a>
-            <p className="font-mono text-[10px] text-[#a0a0a0] uppercase tracking-wider">
-              617.932.5512
-            </p>
           </div>
           <div className="font-mono text-[10px] text-[#a0a0a0] uppercase tracking-wider">
             Based in Boston and Houston, working globally
