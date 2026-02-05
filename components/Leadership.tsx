@@ -72,9 +72,9 @@ export default function Leadership() {
         {/* Ben Letson - CTO */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 relative pt-8 sm:pt-12 border-t border-[#00ff96]/20">
           <div className="lg:col-span-2">
-            <div className="code-accent mb-4 text-[11px]">[CTO & FOUNDER]</div>
+            <div className="code-accent mb-4 text-[11px]">[CTO]</div>
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-light mb-6 leading-tight tracking-tight">
-              Ben Letson — CTO & Founder
+              Ben Letson — CTO
             </h3>
             <div className="body-text space-y-6 text-white">
               <p>
