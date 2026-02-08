@@ -30,13 +30,13 @@ export default function About() {
         {/* Main content */}
         <div className="lg:col-span-2 space-y-6 sm:space-y-8 body-text">
           <p className="text-white leading-relaxed">
-            Quicksilver Labs is an engineering-led AI firm built by people who have spent years designing, delivering, and operating complex technical systems in production. We come from applied mathematics, engineering, and large-scale technical delivery backgrounds.
+            Quicksilver Labs is an engineering-led AI firm built by PhDs and industry veterans. We&apos;re researchers and practitioners obsessed with what&apos;s next—and how it creates real business value.
           </p>
           <p className="text-white leading-relaxed">
-            We believe AI creates durable advantage when treated as infrastructure, not novelty. We focus on systems that must function under real constraints: imperfect data, regulatory pressure, operational complexity, and long-term ownership.
+            Senior talent at every layer, from strategy to code. We believe AI creates durable advantage when it&apos;s infrastructure, not novelty. We build systems that work in the real world—where data is messy, regulations are strict, and you need it to last.
           </p>
           <p className="text-white font-medium text-lg sm:text-xl leading-relaxed border-l-4 border-[#00ff96] pl-4 sm:pl-6">
-            Quicksilver Labs exists to close the gap between knowing where AI should go and taking responsibility for building what it takes to get there.
+            We turn AI ambition into working systems.
           </p>
         </div>
         
@@ -45,22 +45,18 @@ export default function About() {
           <div className="font-mono text-[10px] text-[#a0a0a0] leading-relaxed space-y-6 border-l-2 border-[#00ff96] pl-4">
             <div>
               <div className="text-[#00ff96] mb-2">BACKGROUNDS</div>
-              <div>Applied mathematics</div>
-              <div>Engineering</div>
-              <div>Large-scale delivery</div>
+              <div>PhDs and industry veterans</div>
             </div>
             <div className="pt-4 border-t border-[#00ff96]/20">
-              <div className="text-[#00ff96] mb-2">CONSTRAINTS</div>
-              <div>Imperfect data</div>
-              <div>Regulatory pressure</div>
-              <div>Operational complexity</div>
-              <div>Long-term ownership</div>
+              <div className="text-[#00ff96] mb-2">REAL WORLD</div>
+              <div>Messy data</div>
+              <div>Strict regulations</div>
+              <div>Built to last</div>
             </div>
             <div className="pt-4 border-t border-[#00ff96]/20">
               <div className="text-[#00ff96] mb-2">APPROACH</div>
               <div>Infrastructure, not novelty</div>
-              <div>Production systems</div>
-              <div>Real-world constraints</div>
+              <div>Strategy to code</div>
             </div>
           </div>
         </div>

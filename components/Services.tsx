@@ -11,14 +11,14 @@ export default function Services() {
       content: (
         <>
           <p className="mb-4 body-text">
-            We help organizations reinvent as AI-native. That means more than adding models, it means rethinking data flows, incentives, workflows, and governance
+            We help organizations become AI-native—not by adding tools, but by redesigning how your business actually runs better with AI.
           </p>
           <p className="body-text">
-            In a market flooded with hype, relying on ad-hoc efforts is a critical mistake. As <a href="https://www.mckinsey.com.br/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#00ff96] transition-colors">recent reports suggest</a>, companies with centralized AI organizations are significantly more likely to generate value than those without structure. We bring the discipline of PhD-level researchers and the pragmatism of industry veterans to build that structure for you. We ensure your strategy is founded on solid ground, turning potential into durable competitive advantage.
+            In a market flooded with hype, you can&apos;t afford ad-hoc efforts. We combine PhD rigor with industry pragmatism—so your AI investment actually delivers. Strategy that stands on solid ground. Potential that converts to lasting advantage.
           </p>
         </>
       ),
-      annotation: "PhD-level researchers and industry veterans building centralized AI structure.",
+      annotation: "PhD rigor and industry pragmatism—strategy that delivers.",
       codeSnippet: `function reinventAsAI(org) {
   const structure = centralize();
   const risks = mapRisks();
@@ -27,15 +27,15 @@ export default function Services() {
     },
     {
       id: "002",
-      title: "Systems Innovation",
+      title: "What We Build",
       content: (
         <>
           <p className="body-text">
-            We bring new approaches, frameworks, and tooling that advance the craft of AI systems engineering. We build software that transforms existing workflows and wont be left behind as AI technology evolves. If you want a simple wrapper around an LLM, hire a bodyshop, if you want to take a step into the AI future, call us.
+            We develop new approaches and tools that move AI systems engineering forward. We build software that changes how you work today—and won&apos;t be obsolete tomorrow. We don&apos;t do commodity AI. If you want to build the future, call us.
           </p>
         </>
       ),
-      annotation: "Building software that transforms workflows and evolves with AI technology.",
+      annotation: "Software that changes how you work—and stays relevant.",
       codeSnippet: `class AIFuture {
   constructor() {
     this.evolves = true;

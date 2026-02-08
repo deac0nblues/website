@@ -7,7 +7,7 @@ const sections = [
   { id: "hero", name: "Init" },
   { id: "services", name: "Services" },
   { id: "process", name: "How We Work" },
-  { id: "thinking", name: "Thinking" },
+  { id: "rnd", name: "R&D" },
   { id: "about", name: "About" },
   { id: "contact", name: "Contact" },
 ];

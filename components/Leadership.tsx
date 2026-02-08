@@ -36,10 +36,10 @@ export default function Leadership() {
             </h3>
             <div className="body-text space-y-6 text-white">
               <p>
-                Dan Watkins is a technical executive with deep experience building and scaling engineering organizations that deliver complex systems in production. He has spent his career at the intersection of technical execution and business strategy, leading teams through high-growth phases and operationalizing AI systems at enterprise scale.
+                PhD in Materials Science. Career spent building and scaling teams that deliver complex systems in production. He operates at the intersection of technical execution and business strategy—leading teams through high growth and operationalizing AI at enterprise scale.
               </p>
               <p>
-                His work focuses on translating technical capability into durable business value. He has built organizations that treat AI as infrastructure—systems that must function reliably under real-world constraints, regulatory requirements, and long-term operational demands.
+                His focus: turning technical capability into business value that lasts. He brings VC experience and knows what scales—and what breaks when you grow too fast.
               </p>
             </div>
           </div>
@@ -49,21 +49,20 @@ export default function Leadership() {
             <div className="font-mono text-[10px] text-[#a0a0a0] leading-relaxed space-y-4 border-l-2 border-[#00ff96] pl-4">
               <div>
                 <div className="text-[#00ff96] mb-2">EXPERIENCE</div>
-                <div>Technical executive</div>
-                <div>Engineering orgs</div>
+                <div>PhD Materials Science</div>
+                <div>Building and scaling teams</div>
                 <div>Enterprise scale</div>
               </div>
               <div className="pt-4 border-t border-[#00ff96]/20">
                 <div className="text-[#00ff96] mb-2">FOCUS</div>
-                <div>Technical → Business</div>
-                <div>AI as infrastructure</div>
-                <div>Real-world constraints</div>
+                <div>Technical → Business value</div>
+                <div>VC experience</div>
+                <div>What scales—and what breaks</div>
               </div>
               <div className="pt-4 border-t border-[#00ff96]/20">
                 <div className="text-[#00ff96] mb-2">DOMAIN</div>
-                <div>High-growth phases</div>
-                <div>Regulatory compliance</div>
-                <div>Long-term operations</div>
+                <div>High growth</div>
+                <div>Operationalizing AI</div>
               </div>
             </div>
           </div>
@@ -78,10 +77,10 @@ export default function Leadership() {
             </h3>
             <div className="body-text space-y-6 text-white">
               <p>
-                Ben Letson is a technical founder with a PhD background and years of experience designing and delivering complex AI systems in production environments. He grew up in early-stage technical teams, helped scale systems through high-growth phases, and went on to operate at large-scale enterprise delivery.
+                PhD in Mathematics. Years spent designing and delivering complex AI systems in production. He came up through early-stage teams, scaled systems through hypergrowth, and went on to lead enterprise-scale delivery.
               </p>
               <p>
-                His work sits at the intersection of applied mathematics, engineering, and execution. He has spent his career understanding why AI systems succeed or fail in production - and building the infrastructure that makes them work.
+                His work lives at the intersection of applied math, engineering, and execution. Career obsession: why AI projects fail in the real world, and how to build systems that don&apos;t.
               </p>
             </div>
           </div>
@@ -91,21 +90,20 @@ export default function Leadership() {
             <div className="font-mono text-[10px] text-[#a0a0a0] leading-relaxed space-y-4 border-l-2 border-[#00ff96] pl-4">
               <div>
                 <div className="text-[#00ff96] mb-2">BACKGROUND</div>
-                <div>PhD</div>
-                <div>Technical founder</div>
-                <div>Production systems</div>
+                <div>PhD Mathematics</div>
+                <div>Production AI systems</div>
+                <div>Early-stage → Enterprise</div>
               </div>
               <div className="pt-4 border-t border-[#00ff96]/20">
                 <div className="text-[#00ff96] mb-2">INTERSECTION</div>
-                <div>Applied mathematics</div>
+                <div>Applied math</div>
                 <div>Engineering</div>
                 <div>Execution</div>
               </div>
               <div className="pt-4 border-t border-[#00ff96]/20">
                 <div className="text-[#00ff96] mb-2">EXPERTISE</div>
-                <div>AI systems failure</div>
-                <div>Production infrastructure</div>
-                <div>Early-stage → Enterprise</div>
+                <div>Why AI projects fail</div>
+                <div>Systems that don&apos;t</div>
               </div>
             </div>
           </div>

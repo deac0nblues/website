@@ -4,6 +4,14 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import Section from "./Section";
 
+interface CarouselArticleInput {
+  title: string;
+  excerpt: string;
+  date: string;
+  category?: string;
+  slug: string;
+}
+
 interface Article {
   id: number;
   title: string;
@@ -14,82 +22,34 @@ interface Article {
   link?: string;
 }
 
-const articles: Article[] = [
-  {
-    id: 7,
-    title: "Breaking the AI Scaling Barrier: How EGGROLL enables cost-effective training of billion-parameter models.",
-    type: "Research Note",
-    excerpt: "A breakthrough algorithm designed to solve the cost and complexity bottlenecks of training massive AI models.",
-    date: "2025.01",
-    category: "RESEARCH",
-    link: "/thinking/engineering-experts-eggroll"
-  },
-  {
-    id: 8,
-    title: "When AI Takes the Couch: Psychometric Jailbreaks Reveal Internal Conflict in Frontier Models.",
-    type: "Research Note",
-    excerpt: "How top-tier AI models reveal deep-seated behavioral patterns resembling trauma, anxiety, and neurodivergence.",
-    date: "2025.01",
-    category: "RESEARCH",
-    link: "/thinking/ai-psychometric-jailbreaks"
-  },
-  {
-    id: 1,
-    title: "Position Paper: AI Infrastructure Patterns",
-    type: "Position Paper",
-    excerpt: "Exploring reusable patterns for building production AI systems that scale reliably under real-world constraints.",
-    date: "2024.12",
-    category: "SYSTEMS",
-    link: "#"
-  },
-  {
-    id: 2,
-    title: "Research Note: Failure Modes in Production AI",
-    type: "Research Note",
-    excerpt: "A systematic analysis of how AI systems fail in production and the engineering practices that prevent them.",
-    date: "2024.11",
-    category: "ENGINEERING",
-    link: "#"
-  },
-  {
-    id: 3,
-    title: "Blog Post: Strategic AI Systems Design",
-    type: "Blog Post",
-    excerpt: "How to think about AI as infrastructure, not novelty, and design systems that create durable competitive advantage.",
-    date: "2024.10",
-    category: "STRATEGY",
-    link: "#"
-  },
-  {
-    id: 4,
-    title: "Position Paper: Ownership Transfer in AI Systems",
-    type: "Position Paper",
-    excerpt: "Best practices for transferring ownership of AI systems to client teams and ensuring long-term operational success.",
-    date: "2024.09",
-    category: "OPERATIONS",
-    link: "#"
-  },
-  {
-    id: 5,
-    title: "Research Note: Time-Boxed Engagements",
-    type: "Research Note",
-    excerpt: "Why time-boxed, senior-led engagements deliver better outcomes than open-ended consulting arrangements.",
-    date: "2024.08",
-    category: "PROCESS",
-    link: "#"
-  },
-  {
-    id: 6,
-    title: "Blog Post: The Systems Innovation Approach",
-    type: "Blog Post",
-    excerpt: "How building reusable systems and frameworks compounds over time, making us faster and more reliable.",
-    date: "2024.07",
-    category: "INNOVATION",
-    link: "#"
-  },
+const PLACEHOLDER_ARTICLES: Article[] = [
+  { id: 1, title: "Content to Come", type: "Coming Soon", excerpt: "Lorem ipsum dolor sit amet.", date: "—", category: "TBA", link: "#" },
+  { id: 2, title: "Content to Come", type: "Coming Soon", excerpt: "Ut enim ad minim veniam.", date: "—", category: "TBA", link: "#" },
+  { id: 3, title: "Content to Come", type: "Coming Soon", excerpt: "Duis aute irure dolor.", date: "—", category: "TBA", link: "#" },
 ];
 
-export default function Thinking() {
+function toCarouselArticles(carouselArticles: CarouselArticleInput[]): Article[] {
+  return carouselArticles.map((a, i) => ({
+    id: i + 1,
+    title: a.title,
+    type: "Research Note",
+    excerpt: a.excerpt,
+    date: a.date,
+    category: a.category ?? "RESEARCH",
+    link: `/thinking/${a.slug}`,
+  }));
+}
+
+interface ThinkingProps {
+  carouselArticles?: CarouselArticleInput[];
+}
+
+export default function Thinking({ carouselArticles = [] }: ThinkingProps) {
+  const articles =
+    carouselArticles.length > 0
+      ? toCarouselArticles(carouselArticles)
+      : PLACEHOLDER_ARTICLES;
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [visibleCards, setVisibleCards] = useState(1);
@@ -121,10 +81,10 @@ export default function Thinking() {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying]);
+  }, [isAutoPlaying, articles.length]);
 
   return (
-    <Section id="thinking" className="hidden lg:block">
+    <Section id="rnd" className="hidden lg:block">
       {/* Section header with metadata */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -132,13 +92,13 @@ export default function Thinking() {
         viewport={{ once: true }}
         className="relative z-10 mb-20"
       >
-        <div className="code-accent mb-4 text-[11px]">[THINKING]</div>
-        <h2 className="headline-medium mb-4">What We're Thinking About</h2>
+        <div className="code-accent mb-4 text-[11px]">[R&D]</div>
+        <h2 className="headline-medium mb-4">From the Lab</h2>
         <div className="font-mono text-[10px] text-[#a0a0a0] uppercase tracking-wider">
           POSITION PAPERS /// RESEARCH NOTES /// BLOG POSTS
         </div>
         <p className="body-text text-[#a0a0a0] mt-6 max-w-3xl">
-          Our team of PhDs and engineers is constantly debating new ideas, dissecting emerging research, and exploring how these advancements can solve real business problems. Here is a glimpse into our ongoing internal dialogue and the insights that drive our work.
+          New ideas. Emerging research. Real problems. Here&apos;s what we&apos;re working on.
         </p>
       </motion.div>
 
@@ -207,7 +167,7 @@ export default function Thinking() {
                     
                     {/* Read more indicator */}
                     <div className="mt-6 font-mono text-[10px] text-[#00ff96] uppercase tracking-wider">
-                      → READ MORE
+                      {article.link && article.link !== "#" ? "→ READ MORE" : "COMING SOON"}
                     </div>
                   </div>
                 </a>
