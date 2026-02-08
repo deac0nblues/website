@@ -68,7 +68,7 @@ export default function Boundaries() {
         <div className="absolute left-0 top-12 w-16 h-px bg-black/8 hidden md:block"></div>
         
         <div className="pl-8 md:pl-12">
-          <p className="mb-6 font-medium text-[#2D2D2D]">We don't:</p>
+          <p className="mb-6 font-medium text-[#2D2D2D]">We don&apos;t:</p>
           <ul className="space-y-3 list-none">
             <li className="flex items-start">
               <span className="text-black/30 mr-3">×</span>
@@ -88,7 +88,7 @@ export default function Boundaries() {
             </li>
             <li className="flex items-start">
               <span className="text-black/30 mr-3">×</span>
-              <span>Ship systems we can't explain or operate</span>
+              <span>Ship systems we can&apos;t explain or operate</span>
             </li>
           </ul>
         </div>

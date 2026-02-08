@@ -46,6 +46,10 @@ The website will be available at [http://localhost:3000](http://localhost:3000)
 
 Open your browser and navigate to that URL. The page will automatically reload when you make changes to the code.
 
+### Deployment (Vercel + Comments → GitHub Issues)
+
+For deploying to Vercel and using in-context comments that convert to GitHub issues, see **[DEPLOYMENT.md](DEPLOYMENT.md)**.
+
 ### Building for Production
 
 To create an optimized production build:

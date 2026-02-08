@@ -7,7 +7,7 @@ const sections = [
   { id: "hero", name: "Init" },
   { id: "services", name: "Services" },
   { id: "process", name: "How We Work" },
-  { id: "thinking", name: "Thinking" },
+  { id: "rnd", name: "R&D" },
   { id: "about", name: "About" },
   { id: "contact", name: "Contact" },
 ];
@@ -20,8 +20,7 @@ export default function NavigationBar() {
   const debounceTimeout = useRef<NodeJS.Timeout | null>(null);
   const MIN_CHANGE_INTERVAL = 150; // milliseconds - minimum time between section changes
 
-  // Memoize isOnDarkSection to prevent unnecessary recalculations
-  const isOnDarkSection = useMemo(() => activeSection === "process", [activeSection]);
+  // All sections now have dark navy background, so we always use terminal green accents
 
   useEffect(() => {
     let ticking = false;
@@ -155,15 +154,11 @@ export default function NavigationBar() {
     >
       <div className="relative flex items-center gap-4">
         {/* Progress line - moved to left */}
-        <div className={`absolute left-0 top-0 bottom-0 w-px transition-colors duration-200 ${
-          activeSection === "process" ? "bg-white/20" : "bg-black/10"
-        }`}></div>
+        <div className="absolute left-0 top-0 bottom-0 w-px bg-[#00ff96]/20 transition-colors duration-200"></div>
         
         {/* Active indicator - moved to left */}
         <motion.div
-          className={`absolute left-0 w-1 transition-colors duration-200 ${
-            activeSection === "process" ? "bg-white" : "bg-black"
-          }`}
+          className="absolute left-0 w-1 bg-[#00ff96] transition-colors duration-200"
           style={{
             height: `${100 / sections.length}%`,
             top: `${(sections.findIndex(s => s.id === activeSection) / sections.length) * 100}%`,
@@ -175,20 +170,18 @@ export default function NavigationBar() {
         <div className="relative flex flex-col gap-8 py-4 pl-4">
           {sections.map((section, index) => {
             const isActive = activeSection === section.id;
-            // When on AISOS section, ALL text should be white. Otherwise, use black.
-            const textColor = isOnDarkSection
-              ? (isActive ? "text-white" : isHovered ? "text-white/60" : "text-white/30")
-              : (isActive ? "text-black" : isHovered ? "text-black/60" : "text-black/30");
-            const borderColor = isOnDarkSection
-              ? (isActive ? "border-white" : "border-white/30")
-              : (isActive ? "border-black" : "border-black/30");
-            const bgColor = isOnDarkSection
-              ? (isActive ? "bg-white" : "bg-transparent")
-              : (isActive ? "bg-black" : "bg-transparent");
-            
-            const finalTextColor = textColor;
-            const finalBorderColor = borderColor;
-            const finalBgColor = bgColor;
+            // All sections use dark navy, so use terminal green for active, white/gray for inactive
+            const textColor = isActive 
+              ? "text-[#00ff96]" 
+              : isHovered 
+              ? "text-white/60" 
+              : "text-white/30";
+            const borderColor = isActive 
+              ? "border-[#00ff96]" 
+              : "border-[#00ff96]/30";
+            const bgColor = isActive 
+              ? "bg-[#00ff96]" 
+              : "bg-transparent";
             
             return (
               <motion.button
@@ -200,7 +193,7 @@ export default function NavigationBar() {
               >
                 {/* Dot */}
                 <motion.div
-                  className={`w-2 h-2 rounded-full border transition-all transition-colors duration-200 ${finalBorderColor} ${finalBgColor}`}
+                  className={`w-2 h-2 rounded-full border transition-all transition-colors duration-200 ${borderColor} ${bgColor}`}
                   animate={{
                     scale: isActive ? 1.5 : 1,
                   }}
@@ -211,7 +204,7 @@ export default function NavigationBar() {
 
                 {/* Label */}
                 <motion.div
-                  className={`code-accent text-xs tracking-widest whitespace-nowrap transition-all transition-colors duration-200 ${finalTextColor}`}
+                  className={`font-mono text-[11px] tracking-widest whitespace-nowrap transition-all transition-colors duration-200 ${textColor}`}
                   animate={{
                     opacity: isActive || isHovered ? 1 : 0,
                     x: isActive || isHovered ? 0 : 10,

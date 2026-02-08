@@ -3,58 +3,74 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import Section from "./Section";
-import AnimatedHeading from "./AnimatedHeading";
-import MouseReactive from "./MouseReactive";
+
+interface CarouselArticleInput {
+  title: string;
+  excerpt: string;
+  date: string;
+  category?: string;
+  slug: string;
+}
 
 interface Article {
   id: number;
   title: string;
   type: string;
   excerpt: string;
+  date?: string;
+  category?: string;
+  link?: string;
 }
 
-const articles: Article[] = [
-  {
-    id: 1,
-    title: "Position Paper: AI Infrastructure Patterns",
-    type: "Position Paper",
-    excerpt: "Exploring reusable patterns for building production AI systems that scale reliably under real-world constraints.",
-  },
-  {
-    id: 2,
-    title: "Research Note: Failure Modes in Production AI",
-    type: "Research Note",
-    excerpt: "A systematic analysis of how AI systems fail in production and the engineering practices that prevent them.",
-  },
-  {
-    id: 3,
-    title: "Blog Post: Strategic AI Systems Design",
-    type: "Blog Post",
-    excerpt: "How to think about AI as infrastructure, not novelty, and design systems that create durable competitive advantage.",
-  },
-  {
-    id: 4,
-    title: "Position Paper: Ownership Transfer in AI Systems",
-    type: "Position Paper",
-    excerpt: "Best practices for transferring ownership of AI systems to client teams and ensuring long-term operational success.",
-  },
-  {
-    id: 5,
-    title: "Research Note: Time-Boxed Engagements",
-    type: "Research Note",
-    excerpt: "Why time-boxed, senior-led engagements deliver better outcomes than open-ended consulting arrangements.",
-  },
-  {
-    id: 6,
-    title: "Blog Post: The Systems Innovation Approach",
-    type: "Blog Post",
-    excerpt: "How building reusable systems and frameworks compounds over time, making us faster and more reliable.",
-  },
+const PLACEHOLDER_ARTICLES: Article[] = [
+  { id: 1, title: "Content to Come", type: "Coming Soon", excerpt: "Lorem ipsum dolor sit amet.", date: "—", category: "TBA", link: "#" },
+  { id: 2, title: "Content to Come", type: "Coming Soon", excerpt: "Ut enim ad minim veniam.", date: "—", category: "TBA", link: "#" },
+  { id: 3, title: "Content to Come", type: "Coming Soon", excerpt: "Duis aute irure dolor.", date: "—", category: "TBA", link: "#" },
 ];
 
-export default function Thinking() {
+function toCarouselArticles(carouselArticles: CarouselArticleInput[]): Article[] {
+  return carouselArticles.map((a, i) => ({
+    id: i + 1,
+    title: a.title,
+    type: "Research Note",
+    excerpt: a.excerpt,
+    date: a.date,
+    category: a.category ?? "RESEARCH",
+    link: `/thinking/${a.slug}`,
+  }));
+}
+
+interface ThinkingProps {
+  carouselArticles?: CarouselArticleInput[];
+}
+
+export default function Thinking({ carouselArticles = [] }: ThinkingProps) {
+  const articles =
+    carouselArticles.length > 0
+      ? toCarouselArticles(carouselArticles)
+      : PLACEHOLDER_ARTICLES;
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [visibleCards, setVisibleCards] = useState(1);
+
+  // Detect window size to determine visible cards
+  useEffect(() => {
+    const updateVisibleCards = () => {
+      const width = window.innerWidth;
+      if (width >= 1024) {
+        setVisibleCards(3); // Desktop: 3 cards
+      } else if (width >= 768) {
+        setVisibleCards(2); // Tablet: 2 cards
+      } else {
+        setVisibleCards(1); // Mobile: 1 card
+      }
+    };
+
+    updateVisibleCards();
+    window.addEventListener('resize', updateVisibleCards);
+    return () => window.removeEventListener('resize', updateVisibleCards);
+  }, []);
 
   // Auto-rotate every 5 seconds
   useEffect(() => {
@@ -65,58 +81,26 @@ export default function Thinking() {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying]);
-
-  // Get the three articles to display (current, next, next+1)
-  const getDisplayedArticles = () => {
-    const displayed: Article[] = [];
-    for (let i = 0; i < 3; i++) {
-      const index = (currentIndex + i) % articles.length;
-      displayed.push(articles[index]);
-    }
-    return displayed;
-  };
-
-  const displayedArticles = getDisplayedArticles();
+  }, [isAutoPlaying, articles.length]);
 
   return (
-    <Section id="thinking">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-[0.01] pointer-events-none" style={{
-        backgroundImage: `
-          linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px)
-        `,
-        backgroundSize: '60px 60px'
-      }}></div>
-      
-      {/* Geometric accents */}
-      <MouseReactive className="absolute top-20 right-20 w-20 h-20 hidden xl:block" intensity={6}>
-        <motion.div 
-          className="w-full h-full border border-black/5 rotate-45"
-          animate={{ rotate: [45, 50, 45] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        ></motion.div>
-      </MouseReactive>
-      <MouseReactive className="absolute bottom-20 left-20 w-16 h-16 hidden lg:block" intensity={6}>
-        <motion.div 
-          className="w-full h-full border border-black/5 -rotate-45"
-          animate={{ rotate: [-45, -50, -45] }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-        ></motion.div>
-      </MouseReactive>
-      
-      {/* Corner squares */}
-      <div className="absolute top-12 left-12 w-8 h-8 border border-black/8 hidden xl:block"></div>
-      <div className="absolute bottom-12 right-12 w-8 h-8 border border-black/8 hidden xl:block"></div>
-      
-      {/* Diagonal lines */}
-      <div className="absolute top-1/4 right-0 w-32 h-px bg-black/6 rotate-45 origin-right hidden xl:block"></div>
-      <div className="absolute bottom-1/4 left-0 w-32 h-px bg-black/6 -rotate-45 origin-left hidden xl:block"></div>
-      
-      {/* Vertical accent lines */}
-      <div className="absolute left-24 top-1/4 bottom-1/4 w-px bg-gradient-to-b from-transparent via-black/6 to-transparent hidden xl:block"></div>
-      <div className="absolute right-24 top-1/4 bottom-1/4 w-px bg-gradient-to-b from-transparent via-black/6 to-transparent hidden xl:block"></div>
+    <Section id="rnd" className="hidden lg:block">
+      {/* Section header with metadata */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="relative z-10 mb-20"
+      >
+        <div className="code-accent mb-4 text-[11px]">[R&D]</div>
+        <h2 className="headline-medium mb-4">From the Lab</h2>
+        <div className="font-mono text-[10px] text-[#a0a0a0] uppercase tracking-wider">
+          POSITION PAPERS /// RESEARCH NOTES /// BLOG POSTS
+        </div>
+        <p className="body-text text-[#a0a0a0] mt-6 max-w-3xl">
+          New ideas. Emerging research. Real problems. Here&apos;s what we&apos;re working on.
+        </p>
+      </motion.div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -127,23 +111,12 @@ export default function Thinking() {
         onMouseEnter={() => setIsAutoPlaying(false)}
         onMouseLeave={() => setIsAutoPlaying(true)}
       >
-        <div className="code-accent mb-4 text-xs tracking-widest">
-          [THINKING]
-        </div>
-        
-        <AnimatedHeading
-          className="text-3xl md:text-4xl font-medium mb-12 text-[#000000]"
-          delay={0.1}
-        >
-          What We're Thinking About
-        </AnimatedHeading>
-
         {/* Carousel container */}
         <div className="relative overflow-hidden">
           <motion.div
-            className="flex gap-6 md:gap-8"
+            className="flex gap-4 sm:gap-6 md:gap-8"
             animate={{
-              x: `-${currentIndex * 33.333}%`,
+              x: `-${currentIndex * (100 / visibleCards)}%`,
             }}
             transition={{
               type: "tween",
@@ -151,41 +124,68 @@ export default function Thinking() {
               ease: "easeInOut",
             }}
             style={{
-              width: `${articles.length * 33.333}%`,
+              width: `${articles.length * (100 / visibleCards)}%`,
             }}
           >
             {articles.map((article) => (
               <div
                 key={article.id}
-                className="flex-shrink-0 w-full md:w-1/3"
-                style={{ minWidth: "calc(33.333% - 1rem)" }}
+                className="flex-shrink-0"
+                style={{
+                  width: `calc(${100 / visibleCards}% - ${visibleCards === 1 ? '0' : visibleCards === 2 ? '0.75rem' : '1rem'})`,
+                  minWidth: `calc(${100 / visibleCards}% - ${visibleCards === 1 ? '0' : visibleCards === 2 ? '0.75rem' : '1rem'})`,
+                }}
               >
-                <div className="border border-black/10 p-6 md:p-8 bg-white/50 hover:bg-white/80 transition-all duration-200 h-full flex flex-col">
-                  <div className="code-accent text-xs tracking-widest text-black/40 mb-3">
-                    {article.type.toUpperCase()}
+                <a href={article.link || "#"} className="block h-full">
+                  <div className="border border-[#00ff96]/30 p-6 md:p-8 bg-[#0a0e27] hover:border-[#00ff96] transition-all duration-200 h-full flex flex-col cursor-pointer">
+                    {/* Metadata header */}
+                    <div className="flex justify-between items-start mb-4">
+                      <div className="font-mono text-[10px] text-[#00ff96] uppercase tracking-wider">
+                        {article.type.toUpperCase()}
+                      </div>
+                      <div className="font-mono text-[10px] text-[#a0a0a0] uppercase tracking-wider">
+                        {article.date}
+                      </div>
+                    </div>
+                    
+                    {/* Category tag */}
+                    <div className="mb-4">
+                      <span className="inline-block font-mono text-[9px] text-[#00ff96] border border-[#00ff96]/30 px-2 py-1 uppercase tracking-wider">
+                        {article.category}
+                      </span>
+                    </div>
+                    
+                    {/* Title */}
+                    <h3 className="text-xl md:text-2xl font-bold mb-4 text-white leading-tight">
+                      {article.title}
+                    </h3>
+                    
+                    {/* Excerpt */}
+                    <p className="text-[#a0a0a0] leading-relaxed text-base flex-grow body-text">
+                      {article.excerpt}
+                    </p>
+                    
+                    {/* Read more indicator */}
+                    <div className="mt-6 font-mono text-[10px] text-[#00ff96] uppercase tracking-wider">
+                      {article.link && article.link !== "#" ? "→ READ MORE" : "COMING SOON"}
+                    </div>
                   </div>
-                  <h3 className="text-xl md:text-2xl font-medium mb-4 text-[#000000]">
-                    {article.title}
-                  </h3>
-                  <p className="text-[#2D2D2D] leading-relaxed text-base flex-grow">
-                    {article.excerpt}
-                  </p>
-                </div>
+                </a>
               </div>
             ))}
           </motion.div>
         </div>
 
         {/* Navigation dots */}
-        <div className="flex justify-center gap-2 mt-8">
+        <div className="flex justify-center gap-2 mt-8 sm:mt-12">
           {articles.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-2 h-2 rounded-full transition-all duration-200 ${
+              className={`rounded-full transition-all duration-200 touch-manipulation ${
                 index === currentIndex
-                  ? "bg-black w-8"
-                  : "bg-black/20 hover:bg-black/40"
+                  ? "bg-[#00ff96] w-12 sm:w-16 h-1.5"
+                  : "bg-[#00ff96]/20 hover:bg-[#00ff96]/40 active:bg-[#00ff96]/60 w-1.5 h-1.5"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />

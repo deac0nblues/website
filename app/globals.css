@@ -3,23 +3,23 @@
 @tailwind utilities;
 
 :root {
-  --background: #f8f7f3;
-  --foreground: #1A1A1A;
-  --accent: #000000;
-  --grid-color: rgba(0, 0, 0, 0.03);
-  --grid-size: 60px;
+  --background: #0a0e27;
+  --foreground: #ffffff;
+  --accent: #00ff96;
+  --secondary-text: #a0a0a0;
+  --grid-color: rgba(0, 255, 150, 0.1);
+  --grid-size: 20px;
 }
 
 body {
   color: var(--foreground);
   background-color: var(--background);
   background-image: 
-    linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(0, 255, 150, 0.1) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(0, 255, 150, 0.1) 1px, transparent 1px);
   background-size: var(--grid-size) var(--grid-size);
   font-family: var(--font-inter), system-ui, sans-serif;
   position: relative;
-  transition: background-size 0.1s ease-out;
   min-height: 100vh;
 }
 
@@ -35,10 +35,101 @@ main {
   }
   
   .code-accent {
-    font-family: 'Courier New', monospace;
-    font-size: 0.85em;
-    letter-spacing: 0.1em;
-    /* Color is set via Tailwind classes or inline styles */
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  
+  .annotation {
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--secondary-text);
+  }
+  
+  .headline-large {
+    font-size: 36px;
+    font-weight: 300;
+    letter-spacing: -2px;
+    line-height: 0.95;
+  }
+  
+  @media (min-width: 640px) {
+    .headline-large {
+      font-size: 48px;
+      letter-spacing: -2.5px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .headline-large {
+      font-size: 64px;
+      letter-spacing: -3px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .headline-large {
+      font-size: 84px;
+    }
+  }
+  
+  .headline-medium {
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: -1.5px;
+    line-height: 0.95;
+  }
+  
+  @media (min-width: 640px) {
+    .headline-medium {
+      font-size: 40px;
+      letter-spacing: -2px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .headline-medium {
+      font-size: 56px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .headline-medium {
+      font-size: 64px;
+    }
+  }
+  
+  .body-text {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  @media (min-width: 640px) {
+    .body-text {
+      font-size: 18px;
+    }
+  }
+  
+  .metric-number {
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--accent);
+  }
+  
+  @media (min-width: 640px) {
+    .metric-number {
+      font-size: 48px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .metric-number {
+      font-size: 64px;
+    }
   }
   
   .section-divider {
